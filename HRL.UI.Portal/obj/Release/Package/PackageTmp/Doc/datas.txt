@@ -1,0 +1,85 @@
+
+ DelFlag int ,--是否删除，0不删除，1删除
+ CreateTime datetime ,--创建时间
+ Creator char(36),--创建人
+ ModifyTime datetime,--修改时间
+ Modified char(36),--修改人
+
+
+
+--纠风表
+create table Bus_TakeError (
+ID char(36) primary key,
+FromSource  char(36) ,--外键关联,来自配置表（多语言表，TABLE_NAME='Bus_TakeError_FromSource'）
+ActionId nvarchar(36),--事项编号
+TypeVal  char(36) ,--类别,来自配置表（多语言表，TABLE_NAME='Bus_TakeError_TypeVal'）
+CreateTime datetime,--创建时间
+ResCompany nvarchar(256),--责任单位
+ResCompanyId char(36),--责任单位（下拉菜单）,来自配置表（多语言表，TABLE_NAME='Bus_TakeError_ResCompanyId'）
+ResPerson  char(36),--责任人,来自配置表（多语言表，TABLE_NAME='Bus_TakeError_ResPerson'）
+AttributeID char(36),--性质（关联表Bus_TakeErrorAttribute中的AttributeID）
+AccessCompany  nvarchar(256),--承办单位
+AccessCompanyId  char(36),--承办单位（下拉菜单）,来自配置表（多语言表，TABLE_NAME='Bus_TakeError_ResCompanyId'）
+OkTime datetime,--完成时间
+IsOverTime int ,--是否超时（0没；1超时）
+IsSearch int ,--是否查实（0没，1查实）
+OverQuality char(36),--完成质量,来自配置表（多语言表，TABLE_NAME='Bus_TakeError_OverQuality'）
+Remark nvarchar(256),--备注
+LevelRecords int, --评分等级 1优，2良，3中，4差
+DelFlag int ,--是否删除（0：没删除，1删除）
+OrderBy int ,--排序
+UserId char(36),--添加当前记录的人员，关联表 Base_UserInfo
+IsPass int ,--0没审核，1通过审核
+)
+
+--纠风表之性质选择项
+create table Bus_TakeErrorAttribute(
+ID char(36) primary key,
+AttributeID char(36),
+AttributeIDItem char(36),--此列为关联多语言表的，性质选择项,来自配置表（多语言表，TABLE_NAME='Bus_TakeErrorAttribute_AttributeIDItem'）
+)
+
+
+--效能投诉
+create table Bus_EffciencyComplain(
+ID char(36) primary key,
+CompanyInfo nvarchar(256),--单位大体信息
+CompanyInfoId char(36),--单位（下拉菜单）,来自配置表（多语言表，TABLE_NAME='Bus_EffciencyComplain_CompanyInfoId'）暂时这样取
+CompanyPerId char(36),--单位人员（下拉菜单）,来自配置表（多语言表，TABLE_NAME='Bus_EffciencyComplain_CompanyPerId'）暂时这样取
+OtherPer nvarchar(256),--其他责任人信息
+ComplainFrmSourceId char(36),--投诉来源,来自配置表（多语言表，TABLE_NAME='Bus_EffciencyComplain_ComplainFrmSource'）
+ComplainAcceptTime datetime,--投诉受理时间
+ComplainCode nvarchar(128),--投诉件编号
+ComplainProfileContent nvarchar(1024),--投诉简要内容
+AboutFile nvarchar(256),--相关附件(暂时可以不做)
+ComplainType char(36),--投诉类型 ,来自配置表（多语言表，TABLE_NAME='Bus_TakeErrorAttribute_AttributeIDItem'）
+ExecuteRes char(36) ,--处理情况（关联表Bus_EffComplExeRes的ExecuteResId）
+--【此三列为状态
+IsOverTime int ,--是否超时（0没；1超时）
+IsSearch int ,--是否查实（0没，1查实）
+MassesSatisfy int ,--群众是否满意（0不满意，1满意）
+--】
+LevelRecords int, --评分等级 1优，2良，3中，4差
+)
+
+alter  table [dbo].[Bus_EffciencyComplain] add DelFlag int ;--是否删除，0不删除，1删除
+alter  table [dbo].[Bus_EffciencyComplain] add  CreateTime datetime ;--创建时间
+alter  table [dbo].[Bus_EffciencyComplain] add  Creator char(36);--创建人
+alter  table [dbo].[Bus_EffciencyComplain] add  ModifyTime datetime;--修改时间
+alter  table [dbo].[Bus_EffciencyComplain] add  Modified char(36);--修改人
+alter  table [dbo].[Bus_EffciencyComplain] add  UserId char(36) ;--人员信息
+alter  table [dbo].[Bus_EffciencyComplain] add  IsPass int ;--0没审核，1通过审核
+
+alter  table [dbo].[Bus_EffciencyComplain] add  Phone nvarchar(16) ;--投诉人手机
+alter  table [dbo].[Bus_EffciencyComplain] add  AreaCode nvarchar(8) ;--投诉人区号
+alter  table [dbo].[Bus_EffciencyComplain] add  Tel nvarchar(16) ;--投诉人电话
+alter  table [dbo].[Bus_EffciencyComplain] add  ComplainAreaCode nvarchar(8) ;--被投诉人区号
+alter  table [dbo].[Bus_EffciencyComplain] add  ComplainTel nvarchar(16) ;--被投诉人电话
+
+
+--效能投诉之处理情况
+create table Bus_EffComplExeRes(
+ID char(36) primary key,
+ExecuteResId char(36),
+ExecuteResIdItem char(36),--此列为关联多语言表的，处理情况,来自配置表（多语言表，TABLE_NAME='Bus_EffComplExeRes_ExecuteResIdItem'）
+)

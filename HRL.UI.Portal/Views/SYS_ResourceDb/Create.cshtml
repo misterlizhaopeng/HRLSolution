@@ -1,0 +1,87 @@
+﻿@using HRL.Common;
+@using HRL.Model;
+@using HRL.BLL;
+@{
+    Layout = null;
+}
+
+<script>
+    //删除回调
+    $('#tabledit1').on('afterdelete.bjui.tabledit', function (e) {
+        var $tbody = $(e.relatedTarget)
+
+        console.log('你删除了一条数据，还有[' + $tbody.find('> tr').length + ']条数据！')
+    })
+    function refreshyhdiv()
+    {
+        do_openyh_layout('');
+    }
+    function clickDeleteHr(obj) {
+        if (confirm('确定删除改行吗？')) {
+            $(obj).parent().parent().remove();
+        }
+        //$("a:last", $(obj).parent()).click();
+    }
+</script>
+<div class="bjui-searchBar">
+    <button type="button" class="btn-green" data-toggle="tableditadd" data-target="#tabledit1" data-num="1" data-icon="plus">@GlobalLngResource.GetRes("Add")</button>
+</div>
+<div class="bjui-pageContent">
+    <form id="tradePlanEdit" class="pageForm" action="@Url.Action("Create", "SYS_ResourceDb")" data-toggle="validate" data-callback="onEditSuccuss">
+        <table id="tabledit1">
+            <tbody>
+                <tr>
+                    <td>
+                        <label class="control-label x120">@GlobalLngResource.GetRes("table_name", "Sys_MultiLangInfo")：</label>
+                        <input type="text" name="table_name" value="" data-rule="required" size="20" />
+                    </td>
+                 
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label x120">@GlobalLngResource.GetRes("table_desc", "Sys_MultiLangInfo")：</label>
+                        <input name="table_desc" type="text" size="20" value="" data-rule="required" />
+                    </td>
+                  
+                </tr>
+                <tr><td>
+    <label class="control-label x120">@GlobalLngResource.GetRes("table_descEng", "Sys_MultiLangInfo")：</label>
+    <input name="table_descEng" type="text" size="20" value="" data-rule="required" />
+</td></tr>
+                <tr>
+                    <td colspan="2">
+                        <!--开始-->
+                        <table class="table table-bordered table-hover table-striped table-top" data-toggle="tabledit">
+                            <thead>
+                                <tr>
+                                    <th title="@GlobalLngResource.GetRes("column_id", "Sys_MultiLangInfo")" align="center"><input type="text" name="resourceParameter[#index#].Column_ID" placeholder="文本框"></th>
+                                    <th title="@GlobalLngResource.GetRes("chinese")" align="center"><input type="text" name="resourceParameter[#index#].Chinese" placeholder="文本框"></th>
+                                    <th title="@GlobalLngResource.GetRes("english")" align="center"><input type="text" name="resourceParameter[#index#].English" placeholder="文本框"></th>
+                                    <th title="" data-addtool="true" width="100" align="center">
+                                     
+                                        <a onclick="clickDeleteHr(this)" class="fa fa-remove" style="cursor:pointer"></a>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                   <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <!--结束-->
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        </form>
+    </div>
+    <div class="bjui-pageFooter">
+        <ul>
+            <li><button type="button" class="btn-close">@GlobalLngResource.GetRes("Close")</button></li>
+            <li><button type="submit" class="btn-default">@GlobalLngResource.GetRes("Save")</button></li>
+        </ul>
+    </div>

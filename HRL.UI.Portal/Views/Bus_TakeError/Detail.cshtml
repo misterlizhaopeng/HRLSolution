@@ -1,0 +1,91 @@
+﻿@using HRL.BLL;
+@using HRL.Model;
+@{
+    Layout = null;
+    var tradePlan = ViewBag.ShowModel as Bus_TakeError;
+}
+<div class="bjui-pageContent">
+    <table class="table table-condensed table-hover">
+        <tbody>
+            <tr>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("FromSource", "Bus_TakeError")：</label>
+                    @tradePlan.FromSourceName
+                </td>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("ActionId", "Bus_TakeError")：</label>
+                    @tradePlan.ActionId
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("TypeVal", "Bus_TakeError")：</label>
+                    @tradePlan.TypeValName
+                </td>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("CreateTime", "Bus_TakeError")：</label>
+                    @tradePlan.CreateTime
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("ResCompany", "Bus_TakeError")：</label>
+                    @tradePlan.ResCompany
+                </td>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("ResPerson", "Bus_TakeError")：</label>
+                    @tradePlan.ResPerson
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("AttributeID", "Bus_TakeError")：</label>
+                    @foreach (var item in tradePlan.AttrList) { 
+                        @(item.AttributeIDItemName) Write("，");
+                    }
+                </td>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("AccessCompany", "Bus_TakeError")：</label>
+                    @tradePlan.AccessCompany
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("OkTime", "Bus_TakeError")：</label>
+                    @tradePlan.OkTime
+                </td>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("IsOverTime", "Bus_TakeError")：</label>                    
+                    @if (tradePlan.IsOverTime == 1) { Write("是"); } else { Write("否"); }
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("IsSearch", "Bus_TakeError")：</label>
+                    @if (tradePlan.IsSearch == 1) { Write("是"); } else { Write("否"); }
+                </td>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("OverQuality", "Bus_TakeError")：</label>
+                    @tradePlan.OverQualityName
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("Remark", "Bus_TakeError")：</label>
+                    @tradePlan.Remark
+                </td>
+                <td><label class="control-label x120">@GlobalLngResource.GetRes("LevelRecords", "Bus_TakeError")：</label>
+                @if (tradePlan.LevelRecords == 1) { Write("优"); }
+                else if (tradePlan.LevelRecords == 2) { Write("良"); }
+                else if (tradePlan.LevelRecords == 3) { Write("中"); }
+                else if (tradePlan.LevelRecords == 4) { Write("差"); }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close">@GlobalLngResource.GetRes("Close")</button></li>
+    </ul>
+</div>

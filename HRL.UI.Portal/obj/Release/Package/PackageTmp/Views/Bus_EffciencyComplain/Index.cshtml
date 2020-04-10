@@ -1,0 +1,169 @@
+﻿@using HRL.BLL;
+@using HRL.Common;
+@using HRL.Model;
+@using HRL.Model.Enums;
+@{ Layout = null;
+    var resList = ViewBag.ShowList as List<Bus_EffciencyComplain>;
+    var md = ViewBag.Model as Bus_EffciencyComplain;
+    int? total = (int?)ViewBag.total;
+
+    Sys_MultiLangInfoService langService = new Sys_MultiLangInfoService();
+    var sourceList = langService.GetLangData(EffciencyComplainEnum.Bus_EffciencyComplain_ComplainFrmSource.ToString());
+    var typeList = langService.GetLangData(EffciencyComplainEnum.Bus_TakeErrorAttribute_AttributeIDItem.ToString());
+    var executeList = langService.GetLangData(EffciencyComplainEnum.Bus_EffComplExeRes_ExecuteResIdItem.ToString());
+}
+<script type="text/javascript">
+    $(document).on(BJUI.eventType.afterInitUI, function (e) {
+        $('#apbodyBus_EffciencyComplain tr').contextMenu('apmenuBus_EffciencyComplain',
+        {
+            bindings:
+            {
+                'detail': function (t, target) {
+                    $(t).find("#detail").click();
+                },
+                'edit': function (t, target) {
+                    $(t).find("#edit").click();
+                },
+                'delete': function (t, target) {
+                    $(t).find("#delete").click();
+                },
+                'review': function (t, target) {
+                    $(t).find("#review").click();
+                }
+            },
+            onShowMenu: function (e, menu) {
+                $("#detail", menu).css('display', '');
+                $("#edit", menu).css('display', '');
+                $("#delete", menu).css('display', '');
+                $("#review", menu).css('display', '');
+                $(e.currentTarget).addClass("selected");
+                $(e.currentTarget).siblings().removeClass("selected");
+                return menu;
+            }
+        });
+    });
+</script>
+<div class="bjui-pageHeader">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="@Url.Action("Index")" method="post">
+        <div class="bjui-searchBar">
+            <label>@GlobalLngResource.GetRes("ComplainFrmSourceIdName", "Bus_EffciencyComplain")：</label>
+            <select data-toggle="selectpicker" id="ComplainFrmSourceId" name="ComplainFrmSourceId">
+                <option value="">--请选择--</option>
+                @foreach (var source in sourceList)
+                {
+                    <option value="@source.ID" @if (source.ID == md.ComplainFrmSourceId) { Write("selected"); }>
+                        @source.COLUMN_NAME
+                    </option>
+                }
+            </select>
+            &nbsp;
+            <label>@GlobalLngResource.GetRes("ComplainTypeName", "Bus_EffciencyComplain")：</label>
+            <select data-toggle="selectpicker" id="ComplainType" name="ComplainType">
+                <option value="">--请选择--</option>
+                @foreach (var source in typeList)
+                {
+                    <option value="@source.ID" @if (source.ID == md.ComplainType) { Write("selected"); }>
+                        @source.COLUMN_NAME
+                    </option>
+                }
+            </select>   &nbsp;
+            <label>@GlobalLngResource.GetRes("ExecuteRes", "Bus_EffciencyComplain")：</label>
+            <select data-toggle="selectpicker" id="ExecuteRes" name="ExecuteRes">
+                <option value="">--请选择--</option>
+                @foreach (var source in executeList)
+                {
+                    <option value="@source.ID" @if (source.ID == md.ExecuteRes) { Write("selected"); }>
+                        @source.COLUMN_NAME
+                    </option>
+                }
+            </select>   &nbsp;
+            <label>@GlobalLngResource.GetRes("ComplainAcceptTime", "Bus_EffciencyComplain")：</label>
+
+            @*<input name="ComplainAcceptTime" type="text"  size="15" value="@ShowModel.ComplainAcceptTime" data-rule="required" />*@
+
+
+
+            <input type="text" id="BeginCreateTime" data-toggle="datepicker" data-pattern="yyyy-MM-dd" size="12" value="@md.BeginCreateTime" name="BeginCreateTime" class="form-control" size="10"> 到
+            <input type="text" id="EndCreateTime" data-toggle="datepicker" data-pattern="yyyy-MM-dd" size="12" value="@md.EndCreateTime" name="EndCreateTime" class="form-control" size="10">
+            <button type="submit" class="btn-default" data-icon="search">@GlobalLngResource.GetRes("Search")</button>&nbsp;
+            <a href="@Url.Action("Edit", "Bus_EffciencyComplain")" class="btn btn-green" data-toggle="dialog" data-icon="plus" data-width="750" data-height="600">@GlobalLngResource.GetRes("Add")</a>
+            <a href="@Url.Action("PicDataShow", "Bus_EffciencyComplain")" data-toggle="navtab" class="btn btn-green" data-id="navtab-PicDataShow" data-title="">图形报表</a>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <!--变化的地方-->
+    <table data-toggle="tablefixed" data-width="100%" data-nowrap="true">
+        <thead>
+            <tr>
+                <th align="center">@GlobalLngResource.GetRes("CompanyInfoIdName", "Bus_EffciencyComplain")</th>
+                <th align="center">@GlobalLngResource.GetRes("CompanyPerIdName", "Bus_EffciencyComplain")</th>
+                <th align="center">@GlobalLngResource.GetRes("ComplainFrmSourceIdName", "Bus_EffciencyComplain")</th>
+                <th align="center">@GlobalLngResource.GetRes("ComplainAcceptTime", "Bus_EffciencyComplain")</th>
+                <th align="center">@GlobalLngResource.GetRes("ComplainCode", "Bus_EffciencyComplain")</th>
+                <th align="center">@GlobalLngResource.GetRes("ComplainTypeName", "Bus_EffciencyComplain")</th>
+                <th align="center">@GlobalLngResource.GetRes("State", "Bus_EffciencyComplain")</th>
+                <th align="center">@GlobalLngResource.GetRes("IsPass", "Bus_TakeError")</th>
+                <th align="center" style="display:none"></th>
+            </tr>
+        </thead>
+        <tbody id="apbodyBus_EffciencyComplain">
+            @foreach (var temp in resList)
+            {
+                <tr ondblclick="javascript: $('#detail', this).click();">
+                    <td>@temp.CompanyInfoIdName</td>
+                    <td>@temp.CompanyPerIdName</td>
+                    <td>@temp.ComplainFrmSourceIdName</td>
+                    <td>@temp.ComplainAcceptTime</td>
+                    <td>@temp.ComplainCode</td>
+                    <td>@temp.ComplainTypeName</td>
+                    <td>@temp.State</td>
+                    <td>@if (temp.IsPass == TakeErrorStatusEnum.Pass.GetHashCode()) { Write("审核通过"); } else if (temp.IsPass == TakeErrorStatusEnum.UnPass.GetHashCode()) { Write("未审核"); } else { Write("未知"); }</td>
+                    <td style="display:none">
+                        <a href="@Url.Action("Detail/" + temp.ID, "Bus_EffciencyComplain")" id="detail" class="btn btn-blue" data-toggle="dialog" data-width="750" data-height="450" data-id="dialog-mask" data-mask="true" data-title="@GlobalLngResource.GetRes("Detail")"></a>
+                        <a href="@Url.Action("Edit/" + temp.ID, "Bus_EffciencyComplain")" id="edit" class="btn btn-green" data-toggle="dialog" data-width="750" data-height="600" data-id="dialog-mask" data-mask="true" data-title="@GlobalLngResource.GetRes("Edit")"></a>
+                        <a href="@Url.Action("Delete/" + temp.ID, "Bus_EffciencyComplain")" id="delete" class="btn btn-red" data-toggle="doajax" data-confirm-msg="@GlobalLngResource.GetRes("DeleteSingleAlert")" data-callback="onDeleteSuccess">@GlobalLngResource.GetRes("Delete")</a>
+                        @if (ViewBag.CurRole == null || ViewBag.CurRole != "1")
+                        {
+                            <a href="@Url.Action("Review/" + temp.ID, "Bus_EffciencyComplain")" id="review" class="btn btn-blue" data-toggle="doajax" data-confirm-msg="@GlobalLngResource.GetRes("ReviewSingleAlert")" data-callback="onRefreshCurPage">@GlobalLngResource.GetRes("Review")</a>
+                        }
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="bjui-pageFooter">
+    <div class="pages">
+        <span>@GlobalLngResource.GetRes("PerPage")&nbsp;</span>
+        <div class="selectPagesize">
+            <select data-toggle="selectpicker" data-toggle-change="changepagesize">
+                <option value="20" selected="selected">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+        </div>
+        <span>&nbsp;@GlobalLngResource.GetRes("Item")，@GlobalLngResource.GetRes("Total") @total @GlobalLngResource.GetRes("Item")</span>
+    </div>
+    <div class="pagination-box" data-toggle="pagination" data-total="@total" data-page-size="20" data-page-current="1">
+    </div>
+</div>
+<div class="contextMenu" id="apmenuBus_EffciencyComplain" style="display:none;">
+    <ul>
+        <li id="detail">
+            <span class="icon"><i class="fa fa-plus"></i></span>@GlobalLngResource.GetRes("Detail")
+        </li>
+        <li id="edit">
+            <span class="icon"><i class="fa fa-edit"></i></span>@GlobalLngResource.GetRes("Edit")
+        </li>
+        <li id="delete">
+            <span class="icon"><i class="fa fa-remove"></i></span>@GlobalLngResource.GetRes("Delete")
+        </li>
+        
+        @if (ViewBag.CurRole == null || ViewBag.CurRole != "1")
+        {
+            <li id="review">
+                <span class="icon"><i class="fa fa-edit"></i></span>@GlobalLngResource.GetRes("Review")
+            </li>}
+    </ul>
+</div>

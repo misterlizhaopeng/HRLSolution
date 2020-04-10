@@ -1,0 +1,71 @@
+﻿@using HRL.Common;
+@using HRL.Model;
+@using HRL.BLL;
+@{
+    Layout = null;
+    var searcForm = ViewBag.searchForm;
+    var resourceList=ViewBag.resourceList as List<Sys_MultiLangInfo>;
+    var menuList = ViewBag.MenuNameList as Dictionary<string, string>;
+}
+
+
+<script type="text/javascript">
+</script>
+<div class="bjui-pageHeader">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="@Url.Action("AddLangIndex", "SYS_ResourceDb")" method="post">
+        <div class="bjui-searchBar">
+            <label>@GlobalLngResource.GetRes("ManageModelName") :</label>
+            <select name="tableName" id="tableName" data-toggle="selectpicker" data-width="180">
+                <option value="all"></option>
+                @foreach (var menu in menuList)
+                {
+                    <option value="@menu.Key" @if (menu.Key == ViewBag.ResourceCode) { Write("selected"); }>
+                        @menu.Value
+                    </option>
+                }
+            </select>
+            &nbsp;
+            <button type="submit" class="btn-default" data-icon="search">@GlobalLngResource.GetRes("Search")</button>&nbsp;
+            <a href="@Url.Action("Create", "SYS_ResourceDb")" class="btn btn-green" data-icon="plus" data-toggle="dialog" data-width="800" data-height="440" data-id="dialog-mask" data-mask="true">@GlobalLngResource.GetRes("Add")</a>
+            <a href="@Url.Action("Delete", "SYS_ResourceDb")" data-toggle="doajaxchecked" class="btn btn-green" data-icon="delete" data-confirm-msg="确定要操作该选中项？" data-idname="delids" data-group="ids" data-callback="onDeleteSuccess">@GlobalLngResource.GetRes("Delete")</a>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <table data-toggle="tablefixed" data-width="100%">
+        <thead>
+            <tr>
+                <th width="26"><input type="checkbox" class="checkboxCtrl" data-group="ids" data-toggle="icheck"></th>
+                <th align="center">@GlobalLngResource.GetRes("table_name", "Sys_MultiLangInfo")</th>
+                <th align="center">@GlobalLngResource.GetRes("table_desc", "Sys_MultiLangInfo")</th>
+                <th data-order-field="column_id" align="center">@GlobalLngResource.GetRes("column_id", "Sys_MultiLangInfo")</th>
+                <th align="center">@GlobalLngResource.GetRes("column_name", "Sys_MultiLangInfo")</th>
+            </tr>
+        </thead>
+        <tbody id="tradePlan_tbody">
+            @foreach (var temp in resourceList)
+            {
+                <tr data-id="@temp.ID" ondblclick="javascript: $('#detail', this).click();">
+                    <td><input name="ids" value="@temp.ID" type="checkbox"></td>
+                    <td>@temp.TABLE_NAME</td>
+                    <td>@temp.TABLE_DESC</td>
+                    <td>@temp.COLUMN_ID</td>
+                    <td>@temp.COLUMN_NAME</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="contextMenu" id="tradePlanMenu" style="display:none;">
+    <ul>
+        <li id="detail">
+            <span class="icon"><i class="fa fa-plus"></i></span>@GlobalLngResource.GetRes("Detail")
+        </li>
+        <li id="edit">
+            <span class="icon"><i class="fa fa-edit"></i></span>@GlobalLngResource.GetRes("Edit")
+        </li>
+        <li id="delete">
+            <span class="icon"><i class="fa fa-remove"></i></span>@GlobalLngResource.GetRes("Abandon")
+        </li>
+    </ul>
+</div>

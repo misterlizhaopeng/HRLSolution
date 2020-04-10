@@ -1,0 +1,10 @@
+C:\Users\Administrator\Desktop\HRL\HRLSolution\HRL.Common\bin\Debug\HRL.Common.dll
+C:\Users\Administrator\Desktop\HRL\HRLSolution\HRL.Common\bin\Debug\HRL.Common.pdb
+C:\Users\Administrator\Desktop\HRL\HRLSolution\HRL.Common\obj\Debug\HRL.Common.dll
+C:\Users\Administrator\Desktop\HRL\HRLSolution\HRL.Common\obj\Debug\HRL.Common.pdb
+F:\HRLSolution\HRLSolution\HRL.Common\bin\Debug\HRL.Common.dll
+F:\HRLSolution\HRLSolution\HRL.Common\bin\Debug\HRL.Common.pdb
+F:\HRLSolution\HRLSolution\Lib\HRL.Common.dll
+F:\HRLSolution\HRLSolution\Lib\HRL.Common.pdb
+F:\HRLSolution\HRLSolution\HRL.Common\obj\Debug\HRL.Common.dll
+F:\HRLSolution\HRLSolution\HRL.Common\obj\Debug\HRL.Common.pdb

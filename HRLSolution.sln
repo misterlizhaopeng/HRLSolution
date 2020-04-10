@@ -1,0 +1,112 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRL.UI.Portal", "HRL.UI.Portal\HRL.UI.Portal.csproj", "{9DE34DDD-CDF0-4E6A-9EA3-9E43E81586E2}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FB6F2A25-C684-40AA-B4DD-71F56A9431B8} = {FB6F2A25-C684-40AA-B4DD-71F56A9431B8}
+		{640BC7F9-BFAE-43C3-9BD1-183A86F8ACAD} = {640BC7F9-BFAE-43C3-9BD1-183A86F8ACAD}
+		{7A7C8BFF-40D7-476D-8AD2-85946C4EC8D5} = {7A7C8BFF-40D7-476D-8AD2-85946C4EC8D5}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRL.IDAL", "HRL.IDAL\HRL.IDAL.csproj", "{64AA6E40-FE9F-4EA6-BFA2-690F98A485DB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FB6F2A25-C684-40AA-B4DD-71F56A9431B8} = {FB6F2A25-C684-40AA-B4DD-71F56A9431B8}
+		{7A7C8BFF-40D7-476D-8AD2-85946C4EC8D5} = {7A7C8BFF-40D7-476D-8AD2-85946C4EC8D5}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRL.DAL", "HRL.DAL\HRL.DAL.csproj", "{907108B7-FEA0-496D-A0A6-F160F89CECDB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FB6F2A25-C684-40AA-B4DD-71F56A9431B8} = {FB6F2A25-C684-40AA-B4DD-71F56A9431B8}
+		{64AA6E40-FE9F-4EA6-BFA2-690F98A485DB} = {64AA6E40-FE9F-4EA6-BFA2-690F98A485DB}
+		{7A7C8BFF-40D7-476D-8AD2-85946C4EC8D5} = {7A7C8BFF-40D7-476D-8AD2-85946C4EC8D5}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRL.BLL", "HRL.BLL\HRL.BLL.csproj", "{640BC7F9-BFAE-43C3-9BD1-183A86F8ACAD}"
+	ProjectSection(ProjectDependencies) = postProject
+		{FB6F2A25-C684-40AA-B4DD-71F56A9431B8} = {FB6F2A25-C684-40AA-B4DD-71F56A9431B8}
+		{64AA6E40-FE9F-4EA6-BFA2-690F98A485DB} = {64AA6E40-FE9F-4EA6-BFA2-690F98A485DB}
+		{907108B7-FEA0-496D-A0A6-F160F89CECDB} = {907108B7-FEA0-496D-A0A6-F160F89CECDB}
+		{7A7C8BFF-40D7-476D-8AD2-85946C4EC8D5} = {7A7C8BFF-40D7-476D-8AD2-85946C4EC8D5}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRL.Common", "HRL.Common\HRL.Common.csproj", "{7A7C8BFF-40D7-476D-8AD2-85946C4EC8D5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HRL.Model", "HRL.Model\HRL.Model.csproj", "{FB6F2A25-C684-40AA-B4DD-71F56A9431B8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Implement", "Implement", "{240CFF64-F00E-4868-9B0C-A11EEE7D8405}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Interface", "Interface", "{776740EC-3EF6-4AF7-AFFE-EE405057CCDB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{9DE34DDD-CDF0-4E6A-9EA3-9E43E81586E2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9DE34DDD-CDF0-4E6A-9EA3-9E43E81586E2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9DE34DDD-CDF0-4E6A-9EA3-9E43E81586E2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9DE34DDD-CDF0-4E6A-9EA3-9E43E81586E2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{64AA6E40-FE9F-4EA6-BFA2-690F98A485DB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{64AA6E40-FE9F-4EA6-BFA2-690F98A485DB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{64AA6E40-FE9F-4EA6-BFA2-690F98A485DB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{64AA6E40-FE9F-4EA6-BFA2-690F98A485DB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{907108B7-FEA0-496D-A0A6-F160F89CECDB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{907108B7-FEA0-496D-A0A6-F160F89CECDB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{907108B7-FEA0-496D-A0A6-F160F89CECDB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{907108B7-FEA0-496D-A0A6-F160F89CECDB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{640BC7F9-BFAE-43C3-9BD1-183A86F8ACAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{640BC7F9-BFAE-43C3-9BD1-183A86F8ACAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{640BC7F9-BFAE-43C3-9BD1-183A86F8ACAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{640BC7F9-BFAE-43C3-9BD1-183A86F8ACAD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7A7C8BFF-40D7-476D-8AD2-85946C4EC8D5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7A7C8BFF-40D7-476D-8AD2-85946C4EC8D5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7A7C8BFF-40D7-476D-8AD2-85946C4EC8D5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7A7C8BFF-40D7-476D-8AD2-85946C4EC8D5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FB6F2A25-C684-40AA-B4DD-71F56A9431B8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FB6F2A25-C684-40AA-B4DD-71F56A9431B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FB6F2A25-C684-40AA-B4DD-71F56A9431B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FB6F2A25-C684-40AA-B4DD-71F56A9431B8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{64AA6E40-FE9F-4EA6-BFA2-690F98A485DB} = {776740EC-3EF6-4AF7-AFFE-EE405057CCDB}
+		{907108B7-FEA0-496D-A0A6-F160F89CECDB} = {240CFF64-F00E-4868-9B0C-A11EEE7D8405}
+		{640BC7F9-BFAE-43C3-9BD1-183A86F8ACAD} = {240CFF64-F00E-4868-9B0C-A11EEE7D8405}
+		{7A7C8BFF-40D7-476D-8AD2-85946C4EC8D5} = {240CFF64-F00E-4868-9B0C-A11EEE7D8405}
+		{FB6F2A25-C684-40AA-B4DD-71F56A9431B8} = {240CFF64-F00E-4868-9B0C-A11EEE7D8405}
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://misterlizhaopeng.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = HRL.BLL\\HRL.BLL.csproj
+		SccProjectTopLevelParentUniqueName1 = HRLSolution.sln
+		SccProjectName1 = HRL.BLL
+		SccLocalPath1 = HRL.BLL
+		SccProjectUniqueName2 = HRL.Common\\HRL.Common.csproj
+		SccProjectTopLevelParentUniqueName2 = HRLSolution.sln
+		SccProjectName2 = HRL.Common
+		SccLocalPath2 = HRL.Common
+		SccProjectUniqueName3 = HRL.DAL\\HRL.DAL.csproj
+		SccProjectTopLevelParentUniqueName3 = HRLSolution.sln
+		SccProjectName3 = HRL.DAL
+		SccLocalPath3 = HRL.DAL
+		SccProjectUniqueName4 = HRL.IDAL\\HRL.IDAL.csproj
+		SccProjectTopLevelParentUniqueName4 = HRLSolution.sln
+		SccProjectName4 = HRL.IDAL
+		SccLocalPath4 = HRL.IDAL
+		SccProjectUniqueName5 = HRL.Model\\HRL.Model.csproj
+		SccProjectTopLevelParentUniqueName5 = HRLSolution.sln
+		SccProjectName5 = HRL.Model
+		SccLocalPath5 = HRL.Model
+		SccProjectUniqueName6 = HRL.UI.Portal\\HRL.UI.Portal.csproj
+		SccProjectName6 = HRL.UI.Portal
+		SccLocalPath6 = HRL.UI.Portal
+	EndGlobalSection
+EndGlobal

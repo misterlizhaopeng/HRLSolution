@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="HRLModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Base_DeptInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="36" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="DeptName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ParentId" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="OrderBy" Type="Int32" />
+    <Property Name="Bz" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Base_MenuInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="36" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="MenuName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="MenuUrl" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+    <Property Name="ParentId" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="OrderBy" Type="Int32" />
+    <Property Name="Bz" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="DelFlag" Type="Int32" />
+    <Property Name="ModifyTime" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="Base_RoleMenuInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="36" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="RoleId" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="MenuId" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Base_RolesInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="36" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="RoleName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="OrderBy" Type="Int32" />
+    <Property Name="DelFlag" Type="Int32" />
+    <Property Name="RoleKey" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Base_UserInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="36" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="UserName" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="UserPwd" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="DelFlag" Type="Int32" />
+    <Property Name="Phone" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="Addrs" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="BirthDay" Type="DateTime" Precision="3" />
+    <Property Name="DeptId" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="OrderBy" Type="Int32" />
+    <Property Name="Bz" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="Creator" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="ModifyTime" Type="DateTime" Precision="3" />
+    <Property Name="Modified" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Base_UserMenuInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="36" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="MenuId" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Base_UserRoleInfo">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" MaxLength="36" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="UserId" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="RoleId" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Sys_MultiLangInfo">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" MaxLength="36" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="TABLE_NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="TABLE_DESC" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="COLUMN_NAME" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="COLUMN_ID" Type="String" MaxLength="32" FixedLength="false" Unicode="true" />
+    <Property Name="ORDERBY" Type="Int32" />
+    <Property Name="COLUMN_CULTURE" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Sys_Provinces">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="CityEnglishName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="ParentId" Type="Int32" />
+    <Property Name="ParentPath" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Depth" Type="Int32" />
+    <Property Name="OrderID" Type="Int32" />
+    <Property Name="Child" Type="Int32" />
+    <Property Name="IsUse" Type="Int32" />
+    <Property Name="AddDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityContainer Name="HRLEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Base_DeptInfo" EntityType="Self.Base_DeptInfo" />
+    <EntitySet Name="Base_MenuInfo" EntityType="Self.Base_MenuInfo" />
+    <EntitySet Name="Base_RoleMenuInfo" EntityType="Self.Base_RoleMenuInfo" />
+    <EntitySet Name="Base_RolesInfo" EntityType="Self.Base_RolesInfo" />
+    <EntitySet Name="Base_UserInfo" EntityType="Self.Base_UserInfo" />
+    <EntitySet Name="Base_UserMenuInfo" EntityType="Self.Base_UserMenuInfo" />
+    <EntitySet Name="Base_UserRoleInfo" EntityType="Self.Base_UserRoleInfo" />
+    <EntitySet Name="Sys_MultiLangInfo" EntityType="Self.Sys_MultiLangInfo" />
+    <EntitySet Name="Sys_Provinces" EntityType="Self.Sys_Provinces" />
+    <EntitySet Name="Bus_TakeErrorAttribute" EntityType="HRLModel.Bus_TakeErrorAttribute" />
+    <EntitySet Name="Sys_LanguageType" EntityType="HRLModel.Sys_LanguageType" />
+    <EntitySet Name="Bus_TakeError" EntityType="HRLModel.Bus_TakeError" />
+    <EntitySet Name="Bus_EffComplExeRes" EntityType="HRLModel.Bus_EffComplExeRes" />
+    <EntitySet Name="Bus_EffciencyComplain" EntityType="HRLModel.Bus_EffciencyComplain" />
+  </EntityContainer>
+  <EntityType Name="Bus_TakeErrorAttribute">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="AttributeID" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="AttributeIDItem" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Sys_LanguageType">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="String" Nullable="false" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="LanName" Type="String" MaxLength="16" FixedLength="false" Unicode="false" />
+    <Property Name="DelFlag" Type="Int32" />
+    <Property Name="LanDesc" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="Bus_TakeError">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="FromSource" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="ActionId" Type="String" MaxLength="36" FixedLength="false" Unicode="true" />
+    <Property Name="TypeVal" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="ResCompany" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ResCompanyId" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="ResPerson" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="AttributeID" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="AccessCompany" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="AccessCompanyId" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="OkTime" Type="DateTime" Precision="3" />
+    <Property Name="IsOverTime" Type="Int32" />
+    <Property Name="IsSearch" Type="Int32" />
+    <Property Name="OverQuality" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="Remark" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="LevelRecords" Type="Int32" />
+    <Property Name="DelFlag" Type="Int32" />
+    <Property Name="OrderBy" Type="Int32" />
+    <Property Name="UserId" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="IsPass" Type="Int32" />
+  </EntityType>
+  <EntityType Name="Bus_EffComplExeRes">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="ExecuteResId" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="ExecuteResIdItem" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+  </EntityType>
+  <EntityType Name="Bus_EffciencyComplain">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="String" Nullable="false" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="CompanyInfo" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="CompanyInfoId" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="CompanyPerId" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="OtherPer" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ComplainFrmSourceId" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="ComplainAcceptTime" Type="DateTime" Precision="3" />
+    <Property Name="ComplainCode" Type="String" MaxLength="128" FixedLength="false" Unicode="true" />
+    <Property Name="ComplainProfileContent" Type="String" MaxLength="1024" FixedLength="false" Unicode="true" />
+    <Property Name="AboutFile" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+    <Property Name="ComplainType" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="ExecuteRes" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="IsOverTime" Type="Int32" />
+    <Property Name="IsSearch" Type="Int32" />
+    <Property Name="MassesSatisfy" Type="Int32" />
+    <Property Name="LevelRecords" Type="Int32" />
+    <Property Name="DelFlag" Type="Int32" />
+    <Property Name="CreateTime" Type="DateTime" Precision="3" />
+    <Property Name="Creator" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="ModifyTime" Type="DateTime" Precision="3" />
+    <Property Name="Modified" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="UserId" Type="String" MaxLength="36" FixedLength="true" Unicode="false" />
+    <Property Name="IsPass" Type="Int32" />
+    <Property Name="Phone" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="Tel" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="AreaCode" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+    <Property Name="ComplainTel" Type="String" MaxLength="16" FixedLength="false" Unicode="true" />
+    <Property Name="ComplainAreaCode" Type="String" MaxLength="8" FixedLength="false" Unicode="true" />
+  </EntityType>
+</Schema>

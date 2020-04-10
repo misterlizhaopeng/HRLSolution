@@ -1,0 +1,9 @@
+F:\HRLSolution\HRLSolution\HRL.Model\bin\Release\HRL.Model.dll.config
+F:\HRLSolution\HRLSolution\HRL.Model\bin\Release\HRL.Model.dll
+F:\HRLSolution\HRLSolution\HRL.Model\bin\Release\HRL.Model.pdb
+F:\HRLSolution\HRLSolution\HRL.Model\bin\Release\EntityFramework.dll
+F:\HRLSolution\HRLSolution\HRL.Model\bin\Release\EntityFramework.xml
+F:\HRLSolution\HRLSolution\HRL.Model\bin\Release\zh-Hans\EntityFramework.resources.dll
+F:\HRLSolution\HRLSolution\HRL.Model\obj\Release\HRL.Model.csprojResolveAssemblyReference.cache
+F:\HRLSolution\HRLSolution\HRL.Model\obj\Release\HRL.Model.dll
+F:\HRLSolution\HRLSolution\HRL.Model\obj\Release\HRL.Model.pdb

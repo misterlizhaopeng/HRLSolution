@@ -1,0 +1,54 @@
+﻿@using HRL.BLL;
+@using HRL.Model;
+@{
+    Layout = null;
+    var tradePlan = ViewBag.ShowModel as Base_UserInfo;
+}
+<div class="bjui-pageContent">
+    <table class="table table-condensed table-hover">
+        <tbody>
+            <tr>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("UserName", "Base_UserInfo")：</label>
+                    @tradePlan.UserName
+                </td>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("Email", "Base_UserInfo")：</label>
+                    @tradePlan.Email
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("Phone", "Base_UserInfo")：</label>
+                    @tradePlan.Phone
+                </td>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("Addrs", "Base_UserInfo")：</label>
+                    @tradePlan.Addrs
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("BirthDay", "Base_UserInfo")：</label>
+                    @tradePlan.BirthDay
+                </td>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("DeptId", "Base_UserInfo")：</label>
+                    @tradePlan.DeptId
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("Bz", "Base_UserInfo")：</label>
+                    @tradePlan.Bz
+                </td>
+                <td></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close">@GlobalLngResource.GetRes("Close")</button></li>
+    </ul>
+</div>

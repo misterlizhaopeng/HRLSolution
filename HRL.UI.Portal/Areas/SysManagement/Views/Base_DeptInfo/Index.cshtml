@@ -1,0 +1,234 @@
+﻿@using HRL.BLL;
+@{
+    Layout = null;
+}
+
+<script type="text/javascript">
+		<!--
+		var setting = {
+			async: {
+				enable: true,
+				url:"@Url.Action("GetData")",
+			    autoParam:["id"],
+				dataFilter: filter
+			}
+             ,
+		    callback: {
+		        onClick: zTreeOnClick
+		        ,beforeAsync: beforeAsync,
+		     onAsyncSuccess: onAsyncSuccess
+		      //  , onAsyncSuccess: onAsyncSuccess,
+		    }
+		};
+    //function onAsyncSuccess(event, treeId, treeNode, msg) {
+    //    cancelHalf(treeNode);
+    //}
+    //function cancelHalf(treeNode) {
+    //    var zTree = jQuery.fn.zTree.getZTreeObj("treeDemo");
+    //    treeNode.halfCheck = false;
+    //    zTree.updateNode(treeNode);   //异步加载成功后刷新树节点
+    //}
+    function refreshNode() {
+        /*根据 treeId 获取 zTree 对象*/
+        var zTree = $.fn.zTree.getZTreeObj("scriptTree"),
+        type = "refresh",
+        silent = false,
+        /*获取 zTree 当前被选中的节点数据集合*/
+        nodes = zTree.getSelectedNodes();
+        /*强行异步加载父节点的子节点。[setting.async.enable = true 时有效]*/
+        zTree.reAsyncChildNodes(nodes[0], type, silent);
+    }
+    /**
+     * 刷新当前选择节点的父节点
+     */
+    function refreshParentNode() {
+        var zTree = $.fn.zTree.getZTreeObj("scriptTree"),
+        type = "refresh",
+        silent = false,
+        nodes = zTree.getSelectedNodes();
+        /*根据 zTree 的唯一标识 tId 快速获取节点 JSON 数据对象*/
+        var parentNode = zTree.getNodeByTId(nodes[0].parentTId);
+        /*选中指定节点*/
+        zTree.selectNode(parentNode);
+        zTree.reAsyncChildNodes(parentNode, type, silent);
+    }
+
+        function zTreeOnClick(event, treeId, treeNode) {
+            $('#btnEdit').css('display', '');
+            $('#btnAddSub').css('display', '');
+        if (treeNode.id=='3589FEFA-BC96-425A-8037-F04836BAAE18') {
+            //不能删除
+            $('#btnDelete').css('display', 'none');
+        } else {
+            //可以删除指定节点
+            $('#btnDelete').css('display', '');
+        }
+        $.post('@Url.Action("GetNodeData")', { id: treeNode.id }, function (data) {
+            if (data.DeptName) {
+                $('#lbDeptName').text(data.DeptName);
+            } else {
+                $('#lbDeptName').text('');
+            }
+            if (data.Bz) {
+                $('#lbDeptBZ').text(data.Bz);
+            } else {
+                $('#lbDeptBZ').text('');
+            }
+            if (data.OrderBy) {
+                $('#lbDeptOrder').text(data.OrderBy);
+            } else {
+                $('#lbDeptOrder').text('');
+            }
+
+        });
+        $('#hidId').val(treeNode.id);
+    };
+		function filter(treeId, parentNode, childNodes) {
+			if (!childNodes) return null;
+			for (var i=0, l=childNodes.length; i<l; i++) {
+				childNodes[i].name = childNodes[i].name.replace(/\.n/g, '.');
+			}
+			return childNodes;
+		}
+
+		$(document).ready(function(){
+			$.fn.zTree.init($("#treeDemo"), setting);
+		});
+		var treeObj = $.fn.zTree.getZTreeObj("treeDemo");
+    //	treeObj.expandAll(true);
+
+
+    ///------------------ start
+		function beforeAsync() {
+		    curAsyncCount++;
+		}
+
+		function onAsyncSuccess(event, treeId, treeNode, msg) {
+		    curAsyncCount--;
+		    if (curStatus == "expand") {
+		        expandNodes(treeNode.children);
+		    } else if (curStatus == "async") {
+		        asyncNodes(treeNode.children);
+		    }
+
+		    if (curAsyncCount <= 0) {
+		        curStatus = "";
+		    }
+		}
+
+		var curStatus = "init", curAsyncCount = 0, goAsync = false;
+		function expandAll() {
+		    if (!check()) {
+		        return;
+		    }
+		    var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+		    expandNodes(zTree.getNodes());
+		    if (!goAsync) {
+		        curStatus = "";
+		    }
+		}
+		function expandNodes(nodes) {
+		    if (!nodes) return;
+		    curStatus = "expand";
+		    var zTree = $.fn.zTree.getZTreeObj("treeDemo");
+		    for (var i = 0, l = nodes.length; i < l; i++) {
+		        zTree.expandNode(nodes[i], true, false, false);//展开节点就会调用后台查询子节点
+		        if (nodes[i].isParent && nodes[i].zAsync) {
+		            expandNodes(nodes[i].children);//递归
+		        } else {
+		            goAsync = true;
+		        }
+		    }
+		}
+
+		function check() {
+		    if (curAsyncCount > 0) {
+		        return false;
+		    }
+		    return true;
+		}
+
+		$(document).ready(function () {
+		    $.fn.zTree.init($("#treeDemo"), setting);
+		    setTimeout(function () {
+		        expandAll("treeDemo");
+		    }, 1000);//延迟加载
+		});
+    ///------------------end
+
+
+		$('#btnEdit').click(function () {
+		    var _id = $('#hidId').val();
+		    if (!_id) {
+		        alert('请选择一个节点进行修改！');
+		    }
+		    $(this).dialog({ id: 'dialog-btnEdit', url: '/SysManagement/Base_DeptInfo/Edit?id=' + _id, title: '@GlobalLngResource.GetRes("Edit")', width: 500, height: 200, maxable: true, minable: true,mask:true })
+		});
+
+        $('#btnAddSub').click(function () {
+        var _id = $('#hidId').val();
+        if (!_id) {
+            alert('请选择一个节点进行修改！');
+        }
+        $(this).dialog({ id: 'dialog-btnAddSub', url: '/SysManagement/Base_DeptInfo/AddSub?ParentId=' + _id, title: '@GlobalLngResource.GetRes("AddSub")', width: 500, height: 200, maxable: true, minable: true, mask: true })
+        });
+
+    $('#btnDelete').click(function () {
+        var _id = $('#hidId').val();
+        if (!_id) {
+            alert('请选择一个节点进行修改！');
+        }
+        if (confirm('确认删除该节点以及其所有子节点吗？')) {
+            $.post('@Url.Action("Delete")', { id: _id }, function (data) {
+                if (data.statusCode == 300) {
+                    $(this).alertmsg('error', data.message);
+                } else if (data.statusCode == 200) {
+                     $(this).alertmsg('ok', data.message);
+                     $(this).navtab('reload');
+                }
+            });
+        }
+        });
+   // refreshNode();
+		//-->
+</script>
+<div class="bjui-pageContent">
+    <div style="float:left;top:10px; width:300px;height:480px; overflow-y:scroll; overflow-x:scroll; ">
+        <ul id="treeDemo" class="ztree"></ul>
+    </div>
+    <div style="float:left;top:10px; width:600px;height:480px; ">
+        <form action="@Url.Action("Update")" method="post">
+            <input type="hidden" id="hidId" name="id" value="" />
+            <table class="table table-condensed table-hover">
+                <tbody>
+                    <tr>
+                        <td>
+                            <label class="control-label x120"> 单位名称：</label>
+                            <font id="lbDeptName"></font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="control-label x120">单位描述：</label>
+                            <font id="lbDeptBZ"></font>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <label class="control-label x120">排序：</label>
+                            <font id="lbDeptOrder"></font>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </form>
+    </div>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" id="btnDelete" style="display:none" class="btn-default">@GlobalLngResource.GetRes("Delete")</button></li>
+        <li><button type="button" id="btnAddSub" style="display:none" class="btn-default">@GlobalLngResource.GetRes("AddSub")</button></li>
+        <li><button type="button" id="btnEdit" style="display:none" class="btn-default">@GlobalLngResource.GetRes("Edit")</button></li>
+        <li><button type="submit" id="btnSave" style="display:none" class="btn-default">@GlobalLngResource.GetRes("Save")</button></li>
+    </ul>
+</div>

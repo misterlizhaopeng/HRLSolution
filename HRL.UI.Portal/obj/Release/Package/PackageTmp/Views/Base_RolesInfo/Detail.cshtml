@@ -1,0 +1,27 @@
+﻿@using HRL.BLL;
+@using HRL.Model;
+@{
+    Layout = null;
+    var _md = ViewBag.ShowModel as Base_RolesInfo;
+}
+<div class="bjui-pageContent">
+    <table class="table table-condensed table-hover">
+        <tbody>
+            <tr>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("RoleName", "Base_RolesInfo")：</label>
+                    @_md.RoleName
+                </td>
+                <td>
+                    <label class="control-label x120">@GlobalLngResource.GetRes("OrderBy", "Base_RolesInfo")：</label>
+                    @_md.OrderBy
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close">@GlobalLngResource.GetRes("Close")</button></li>
+    </ul>
+</div>

@@ -1,0 +1,108 @@
+﻿@using HRL.BLL;
+@using HRL.Common;
+@using HRL.Model;
+@{ Layout = null;
+ var resList = ViewBag.ShowList as List<Base_RolesInfo>;
+ var md = ViewBag.Model as Base_RolesInfo;
+ int? total = (int?)ViewBag.total;
+}
+
+<script type="text/javascript">
+    $(document).on(BJUI.eventType.afterInitUI, function (e) {
+        $('#apbody tr').contextMenu('apmenu',
+        {
+            bindings:
+            {
+                'detail': function (t, target) {
+                    $(t).find("#detail").click();
+                },
+                'edit': function (t, target) {
+                    $(t).find("#edit").click();
+                },
+                'delete': function (t, target) {
+                    $(t).find("#delete").click();
+                }
+            },
+            onShowMenu: function (e, menu) {
+                $("#detail", menu).css('display', '');
+                $("#edit", menu).css('display', '');
+                $("#delete", menu).css('display', '');
+                $(e.currentTarget).addClass("selected");
+                $(e.currentTarget).siblings().removeClass("selected");
+                return menu;
+            }
+        });
+    });
+</script>
+<div class="bjui-pageHeader">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="@Url.Action("Index", "Base_RolesInfo")" method="post">
+        <div class="bjui-searchBar">
+            <label>@GlobalLngResource.GetRes("RoleName", "Base_RolesInfo")：</label><input type="text" id="RoleName" value="@md.RoleName" name="RoleName" class="form-control" size="10">&nbsp;
+            <button type="submit" class="btn-default" data-icon="search">@GlobalLngResource.GetRes("Search")</button>&nbsp;
+            <a href="@Url.Action("Edit", "Base_RolesInfo")" class="btn btn-green" data-toggle="dialog" data-icon="plus" data-width="750" data-height="350">@GlobalLngResource.GetRes("Add")</a>
+            @*<div class="pull-right">
+                    <div class="btn-group">
+                        <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy">@GlobalLngResource.GetRes("CheckBox-BatchOperation")<span class="caret"></span></button>
+                        <ul class="dropdown-menu right" role="menu">
+                            <li><a href="@Url.Action("ExportAllToExcel", "UserInfo")" data-toggle="doexport" data-confirm-msg="@GlobalLngResource.GetRes("SureExportInfo")">@GlobalLngResource.GetRes("export")<span style="color: green;">@GlobalLngResource.GetRes("All")</span></a></li>
+                            <li><a href="" data-toggle="doexportchecked" data-confirm-msg="@GlobalLngResource.GetRes("SureExportSelectedInfo")" data-idname="expids" data-group="ids">@GlobalLngResource.GetRes("export")<span style="color: red;">@GlobalLngResource.GetRes("Selected")</span></a></li>
+                            <li><a href="@Url.Action("ExportCurrentToExcel", "UserInfo")" data-toggle="doexport" data-confirm-msg="@GlobalLngResource.GetRes("SureExportCurrentInfo")" data-idname="expids" data-group="ids">@GlobalLngResource.GetRes("export")<span style="color: red;">@GlobalLngResource.GetRes("CurrentPage")</span></a></li>
+                        </ul>
+                    </div>
+                </div>*@
+        </div>
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <table data-toggle="tablefixed" data-width="100%" data-nowrap="true">
+        <thead>
+            <tr>
+                <th align="center" >@GlobalLngResource.GetRes("RoleName", "Base_RolesInfo")</th>
+                <th align="center" data-order-field="OrderBy">@GlobalLngResource.GetRes("OrderBy", "Base_RolesInfo")</th>
+                <th align="center" style="display:none"></th>
+            </tr>
+        </thead>
+        <tbody id="apbody">
+            @foreach (var temp in resList)
+            {
+                <tr ondblclick="javascript: $('#detail', this).click();">
+                    <td>@temp.RoleName</td>
+                    <td>@temp.OrderBy</td>
+                    <td style="display:none">
+                        <a href="@Url.Action("Detail/" + temp.Id, "Base_RolesInfo")" id="detail" class="btn btn-blue" data-toggle="dialog" data-width="750" data-height="350" data-id="dialog-mask" data-mask="true" data-title="@GlobalLngResource.GetRes("Detail")"></a>
+                        <a href="@Url.Action("Edit/" + temp.Id, "Base_RolesInfo")" id="edit" class="btn btn-green" data-toggle="dialog" data-width="750" data-height="350" data-id="dialog-mask" data-mask="true" data-title="@GlobalLngResource.GetRes("Edit")"></a>
+                        <a href="@Url.Action("Delete/" + temp.Id, "Base_RolesInfo")" id="delete" class="btn btn-red" data-toggle="doajax" data-confirm-msg="@GlobalLngResource.GetRes("DeleteSingleAlert")" data-callback="onDeleteSuccess">@GlobalLngResource.GetRes("Delete")</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="bjui-pageFooter">
+    <div class="pages">
+        <span>@GlobalLngResource.GetRes("PerPage")&nbsp;</span>
+        <div class="selectPagesize">
+            <select data-toggle="selectpicker" data-toggle-change="changepagesize">
+                <option value="20" selected="selected">20</option>
+                <option value="50">50</option>
+                <option value="100">100</option>
+            </select>
+        </div>
+        <span>&nbsp;@GlobalLngResource.GetRes("Item")，@GlobalLngResource.GetRes("Total") @total @GlobalLngResource.GetRes("Item")</span>
+    </div>
+    <div class="pagination-box" data-toggle="pagination" data-total="@total" data-page-size="20" data-page-current="1">
+    </div>
+</div>
+<div class="contextMenu" id="apmenu" style="display:none;">
+    <ul>
+        <li id="detail">
+            <span class="icon"><i class="fa fa-plus"></i></span>@GlobalLngResource.GetRes("Detail")
+        </li>
+        <li id="edit">
+            <span class="icon"><i class="fa fa-edit"></i></span>@GlobalLngResource.GetRes("Edit")
+        </li>
+        <li id="delete">
+            <span class="icon"><i class="fa fa-remove"></i></span>@GlobalLngResource.GetRes("Delete")
+        </li>
+    </ul>
+</div>

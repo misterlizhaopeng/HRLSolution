@@ -1,0 +1,69 @@
+﻿@using HRL.BLL;
+@using HRL.Model;
+@{
+    Layout = null;
+    var ShowModel = ViewBag.ShowModel as Base_UserInfo;
+}
+<div class="bjui-pageContent">
+    <form id="tradePlanEdit" class="pageForm" action="@Url.Action("Edit", "UserInfo")" data-to data-toggle="validate" data-callback="onEditSuccuss">
+        <input type="hidden" name="Id" value="@ShowModel.Id" />
+        <table>
+            <tbody>
+                <tr>
+                    <td>
+                        <label class="control-label x120">@GlobalLngResource.GetRes("UserName", "Base_UserInfo")：</label>
+
+                        <input type="text" name="UserName" id="UserName" value="@ShowModel.UserName" data-rule="required;maxSize(128)" size="20" />
+                    </td>
+                    <td>
+                        <label class="control-label x120">@GlobalLngResource.GetRes("UserPwd", "Base_UserInfo")：</label>
+                        <input name="UserPwd" type="password" data-rule="required;password" size="20" value="" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label x120">@GlobalLngResource.GetRes("Email", "Base_UserInfo")：</label>
+                        <input name="Email" type="text" data-rule="email" size="20" value="@ShowModel.Email" />
+                    </td>
+                    <td>
+                        <label class="control-label x120">@GlobalLngResource.GetRes("Phone", "Base_UserInfo")：</label>
+                        <input name="Phone" type="text" size="20" data-rule="mobile" value="@ShowModel.Phone" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label x120">@GlobalLngResource.GetRes("Addrs", "Base_UserInfo")：</label>
+                        <input name="Addrs" type="text" size="20" value="@ShowModel.Addrs" data-rule="maxSize(20)" />
+                    </td>
+                    <td>
+                        <label class="control-label x120">@GlobalLngResource.GetRes("BirthDay", "Base_UserInfo")：</label>
+                        <input name="BirthDay" type="text" data-toggle="datepicker" data-pattern="yyyy-MM-dd" size="20" value="@ShowModel.BirthDay" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label x120">@GlobalLngResource.GetRes("DeptId", "Base_UserInfo")：</label>
+                        <input name="DeptId" type="text" size="20" value="@ShowModel.DeptId" />
+                    </td>
+                    <td>
+                        <label class="control-label x120">@GlobalLngResource.GetRes("Bz", "Base_UserInfo")：</label>
+                        <input name="Bz" type="text" size="20" value="@ShowModel.Bz" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="control-label x120">角色：</label>
+                        @Html.Raw(ViewBag.ShowRoles)
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close">@GlobalLngResource.GetRes("Close")</button></li>
+        <li><button type="submit" class="btn-default">@GlobalLngResource.GetRes("Save")</button></li>
+    </ul>
+</div>

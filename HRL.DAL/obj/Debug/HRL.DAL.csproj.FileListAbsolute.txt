@@ -1,0 +1,12 @@
+C:\Users\Administrator\Desktop\HRL\HRLSolution\HRL.DAL\bin\Debug\HRL.DAL.dll
+C:\Users\Administrator\Desktop\HRL\HRLSolution\HRL.DAL\bin\Debug\HRL.DAL.pdb
+C:\Users\Administrator\Desktop\HRL\HRLSolution\HRL.DAL\obj\Debug\HRL.DAL.csprojResolveAssemblyReference.cache
+C:\Users\Administrator\Desktop\HRL\HRLSolution\HRL.DAL\obj\Debug\HRL.DAL.dll
+C:\Users\Administrator\Desktop\HRL\HRLSolution\HRL.DAL\obj\Debug\HRL.DAL.pdb
+F:\HRLSolution\HRLSolution\HRL.DAL\bin\Debug\HRL.DAL.dll
+F:\HRLSolution\HRLSolution\HRL.DAL\bin\Debug\HRL.DAL.pdb
+F:\HRLSolution\HRLSolution\Lib\HRL.DAL.dll
+F:\HRLSolution\HRLSolution\Lib\HRL.DAL.pdb
+F:\HRLSolution\HRLSolution\HRL.DAL\obj\Debug\HRL.DAL.csprojResolveAssemblyReference.cache
+F:\HRLSolution\HRLSolution\HRL.DAL\obj\Debug\HRL.DAL.dll
+F:\HRLSolution\HRLSolution\HRL.DAL\obj\Debug\HRL.DAL.pdb

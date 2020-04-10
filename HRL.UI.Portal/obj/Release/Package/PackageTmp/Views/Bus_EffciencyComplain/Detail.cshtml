@@ -1,0 +1,155 @@
+﻿@using HRL.BLL;
+@using HRL.Model;
+@using HRL.Model.Enums;
+@{
+    Layout = null;
+    Sys_MultiLangInfoService langService = new Sys_MultiLangInfoService();
+    var tradePlan = ViewBag.ShowModel as Bus_EffciencyComplain;
+    var executeRes = langService.GetLangData(EffciencyComplainEnum.Bus_EffComplExeRes_ExecuteResIdItem.ToString());
+
+    /*
+单位/人员 _Companyperson
+其它责任人 _OtherPer
+投诉件来源 _ComplainFrmSource
+投诉受理时间 _ComplainAcceptTime
+投诉件编号 _ComplainCodeAll
+投诉简要内容  _ComplainContent
+投诉类型 _ComplainType
+处理情况 _ExecuteSome
+是否超时限 _IsOver
+是否查实 _IsTrue
+群众是否满意 _IsOk
+评分等级 _LevelGrade
+     */
+}
+<div class="bjui-pageContent">
+    <table class="table table-condensed table-hover">
+        <tbody>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label x120">@GlobalLngResource.GetRes("_Companyperson", "Bus_EffciencyComplain")：</label>
+                    @tradePlan.CompanyInfo &nbsp;  @tradePlan.CompanyInfoIdName &nbsp; @tradePlan.CompanyPerIdName
+                </td>
+                @*<td>
+                        <label class="control-label x120">@GlobalLngResource.GetRes("ActionId", "Bus_TakeError")：</label>
+                        @tradePlan.ActionId
+                    </td>*@
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label x120">@GlobalLngResource.GetRes("_OtherPer", "Bus_EffciencyComplain")：</label>
+                    @tradePlan.OtherPer
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label x120">投诉人手机：</label>
+                    @tradePlan.Phone
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label x120">投诉人电话：</label>
+                    @tradePlan.AreaCode-@tradePlan.Tel
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <label class="control-label x120">被投诉人电话：</label>
+                    @tradePlan.ComplainAreaCode-@tradePlan.ComplainTel
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label x120">@GlobalLngResource.GetRes("_ComplainFrmSource", "Bus_EffciencyComplain")：</label>
+                    @tradePlan.ComplainFrmSourceIdName
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label x120">@GlobalLngResource.GetRes("_ComplainAcceptTime", "Bus_EffciencyComplain")：</label>
+                    @tradePlan.ComplainAcceptTime
+                </td>
+
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label x120">@GlobalLngResource.GetRes("_ComplainCodeAll", "Bus_EffciencyComplain")：</label>
+                    @tradePlan.ComplainCode
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label x120">@GlobalLngResource.GetRes("_ComplainContent", "Bus_EffciencyComplain")：</label>
+                    @tradePlan.ComplainProfileContent
+                </td>
+                @*<td>
+                        <label class="control-label x120">@GlobalLngResource.GetRes("AccessCompany", "Bus_EffciencyComplain")：</label>
+                        @tradePlan.AccessCompany
+                    </td>*@
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label x120"> 相关附件：</label>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label x120">@GlobalLngResource.GetRes("_ComplainType", "Bus_EffciencyComplain")：</label>
+                    @tradePlan.ComplainTypeName
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label x120">@GlobalLngResource.GetRes("_ExecuteSome", "Bus_EffciencyComplain")：</label>
+                    <div style="margin-left:120px;">
+                        @{
+                            foreach (var atrr in executeRes)
+                            {
+                                if (tradePlan.AttrList != null && tradePlan.AttrList.Where(a => a.ExecuteResIdItem == atrr.ID).ToList().Count > 0)
+                                {
+                                    <label>@atrr.COLUMN_NAME 、</label>
+                                }
+                            }
+                        }
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label x120">@GlobalLngResource.GetRes("_IsOver", "Bus_EffciencyComplain")：</label>
+                    @if (tradePlan.IsOverTime == 1) { Write("是"); } else { Write("否"); }
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label x120">@GlobalLngResource.GetRes("_IsTrue", "Bus_EffciencyComplain")：</label>
+                    @if (tradePlan.IsSearch == 1) { Write("是"); } else { Write("否"); }
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label x120">@GlobalLngResource.GetRes("_IsOk", "Bus_EffciencyComplain")：</label>
+                    @if (tradePlan.MassesSatisfy == 1) { Write("满意"); } else { Write("不满意"); }
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <label class="control-label x120">@GlobalLngResource.GetRes("_LevelGrade", "Bus_EffciencyComplain")：</label>
+                    @if (tradePlan.LevelRecords == 1) { Write("优"); }
+                    else if (tradePlan.LevelRecords == 2) { Write("良"); }
+                    else if (tradePlan.LevelRecords == 3) { Write("中"); }
+                    else if (tradePlan.LevelRecords == 4) { Write("差"); }
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close">@GlobalLngResource.GetRes("Close")</button></li>
+    </ul>
+</div>

@@ -1,0 +1,19 @@
+﻿
+
+
+
+
+select * from lng_sys_tablelang_info where column_id in ('operFailure','operSuccess','sysException')
+
+1.系统异常，请联系管理员"	 result.message = GlobalLngResource.GetRes("sysException");
+2.操作失败!					 result.message = GlobalLngResource.GetRes("operFailure");
+3.操作成功!					 result.message = GlobalLngResource.GetRes("operSuccess");
+4.没有要添加的记录!					 result.message = GlobalLngResource.GetRes("noRecords");
+5.已存在相同的货号				 result.message = GlobalLngResource.GetRes("existHH");
+6.请选择一条记录!				 result.message = GlobalLngResource.GetRes("PleaseSelectOne");
+7.请选择公司!				 result.message = GlobalLngResource.GetRes("SelectCompany");
+8.前台输入数据格式有误!		result.message = GlobalLngResource.GetRes("UIInputModelDataError");
+9.存在相同用户!				result.message = GlobalLngResource.GetRes("ExistSameUserInfo");
+10.存在相同角色!			result.message = GlobalLngResource.GetRes("ExistSameRoleInfo");
+11.存在相同菜单名称!		result.message = GlobalLngResource.GetRes("ExistSameMenuInfo");
+12.去重新登录!		result.message = GlobalLngResource.GetRes("ToLoginAgain");

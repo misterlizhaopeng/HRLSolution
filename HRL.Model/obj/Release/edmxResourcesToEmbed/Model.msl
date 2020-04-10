@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="HRLModelStoreContainer" CdmEntityContainer="HRLEntities">
+    <EntitySetMapping Name="Base_DeptInfo">
+      <EntityTypeMapping TypeName="HRLModel.Base_DeptInfo">
+        <MappingFragment StoreEntitySet="Base_DeptInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DeptName" ColumnName="DeptName" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+          <ScalarProperty Name="Bz" ColumnName="Bz" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Base_MenuInfo">
+      <EntityTypeMapping TypeName="HRLModel.Base_MenuInfo">
+        <MappingFragment StoreEntitySet="Base_MenuInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="MenuName" ColumnName="MenuName" />
+          <ScalarProperty Name="MenuUrl" ColumnName="MenuUrl" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+          <ScalarProperty Name="Bz" ColumnName="Bz" />
+          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Base_RoleMenuInfo">
+      <EntityTypeMapping TypeName="HRLModel.Base_RoleMenuInfo">
+        <MappingFragment StoreEntitySet="Base_RoleMenuInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Base_RolesInfo">
+      <EntityTypeMapping TypeName="HRLModel.Base_RolesInfo">
+        <MappingFragment StoreEntitySet="Base_RolesInfo">
+          <ScalarProperty Name="RoleKey" ColumnName="RoleKey" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Base_UserInfo">
+      <EntityTypeMapping TypeName="HRLModel.Base_UserInfo">
+        <MappingFragment StoreEntitySet="Base_UserInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="UserPwd" ColumnName="UserPwd" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="Addrs" ColumnName="Addrs" />
+          <ScalarProperty Name="BirthDay" ColumnName="BirthDay" />
+          <ScalarProperty Name="DeptId" ColumnName="DeptId" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+          <ScalarProperty Name="Bz" ColumnName="Bz" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Base_UserMenuInfo">
+      <EntityTypeMapping TypeName="HRLModel.Base_UserMenuInfo">
+        <MappingFragment StoreEntitySet="Base_UserMenuInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="MenuId" ColumnName="MenuId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Base_UserRoleInfo">
+      <EntityTypeMapping TypeName="HRLModel.Base_UserRoleInfo">
+        <MappingFragment StoreEntitySet="Base_UserRoleInfo">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="RoleId" ColumnName="RoleId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sys_MultiLangInfo">
+      <EntityTypeMapping TypeName="HRLModel.Sys_MultiLangInfo">
+        <MappingFragment StoreEntitySet="Sys_MultiLangInfo">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="TABLE_NAME" ColumnName="TABLE_NAME" />
+          <ScalarProperty Name="TABLE_DESC" ColumnName="TABLE_DESC" />
+          <ScalarProperty Name="COLUMN_NAME" ColumnName="COLUMN_NAME" />
+          <ScalarProperty Name="COLUMN_ID" ColumnName="COLUMN_ID" />
+          <ScalarProperty Name="ORDERBY" ColumnName="ORDERBY" />
+          <ScalarProperty Name="COLUMN_CULTURE" ColumnName="COLUMN_CULTURE" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sys_Provinces">
+      <EntityTypeMapping TypeName="HRLModel.Sys_Provinces">
+        <MappingFragment StoreEntitySet="Sys_Provinces">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="CityName" ColumnName="CityName" />
+          <ScalarProperty Name="CityEnglishName" ColumnName="CityEnglishName" />
+          <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+          <ScalarProperty Name="ParentPath" ColumnName="ParentPath" />
+          <ScalarProperty Name="Depth" ColumnName="Depth" />
+          <ScalarProperty Name="OrderID" ColumnName="OrderID" />
+          <ScalarProperty Name="Child" ColumnName="Child" />
+          <ScalarProperty Name="IsUse" ColumnName="IsUse" />
+          <ScalarProperty Name="AddDate" ColumnName="AddDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bus_TakeErrorAttribute">
+      <EntityTypeMapping TypeName="HRLModel.Bus_TakeErrorAttribute">
+        <MappingFragment StoreEntitySet="Bus_TakeErrorAttribute">
+          <ScalarProperty Name="AttributeIDItem" ColumnName="AttributeIDItem" />
+          <ScalarProperty Name="AttributeID" ColumnName="AttributeID" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Sys_LanguageType">
+      <EntityTypeMapping TypeName="HRLModel.Sys_LanguageType">
+        <MappingFragment StoreEntitySet="Sys_LanguageType">
+          <ScalarProperty Name="LanDesc" ColumnName="LanDesc" />
+          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+          <ScalarProperty Name="LanName" ColumnName="LanName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bus_TakeError">
+      <EntityTypeMapping TypeName="HRLModel.Bus_TakeError">
+        <MappingFragment StoreEntitySet="Bus_TakeError">
+          <ScalarProperty Name="IsPass" ColumnName="IsPass" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="OrderBy" ColumnName="OrderBy" />
+          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+          <ScalarProperty Name="LevelRecords" ColumnName="LevelRecords" />
+          <ScalarProperty Name="Remark" ColumnName="Remark" />
+          <ScalarProperty Name="OverQuality" ColumnName="OverQuality" />
+          <ScalarProperty Name="IsSearch" ColumnName="IsSearch" />
+          <ScalarProperty Name="IsOverTime" ColumnName="IsOverTime" />
+          <ScalarProperty Name="OkTime" ColumnName="OkTime" />
+          <ScalarProperty Name="AccessCompanyId" ColumnName="AccessCompanyId" />
+          <ScalarProperty Name="AccessCompany" ColumnName="AccessCompany" />
+          <ScalarProperty Name="AttributeID" ColumnName="AttributeID" />
+          <ScalarProperty Name="ResPerson" ColumnName="ResPerson" />
+          <ScalarProperty Name="ResCompanyId" ColumnName="ResCompanyId" />
+          <ScalarProperty Name="ResCompany" ColumnName="ResCompany" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="TypeVal" ColumnName="TypeVal" />
+          <ScalarProperty Name="ActionId" ColumnName="ActionId" />
+          <ScalarProperty Name="FromSource" ColumnName="FromSource" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bus_EffComplExeRes">
+      <EntityTypeMapping TypeName="HRLModel.Bus_EffComplExeRes">
+        <MappingFragment StoreEntitySet="Bus_EffComplExeRes">
+          <ScalarProperty Name="ExecuteResIdItem" ColumnName="ExecuteResIdItem" />
+          <ScalarProperty Name="ExecuteResId" ColumnName="ExecuteResId" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Bus_EffciencyComplain">
+      <EntityTypeMapping TypeName="HRLModel.Bus_EffciencyComplain">
+        <MappingFragment StoreEntitySet="Bus_EffciencyComplain">
+          <ScalarProperty Name="ComplainAreaCode" ColumnName="ComplainAreaCode" />
+          <ScalarProperty Name="ComplainTel" ColumnName="ComplainTel" />
+          <ScalarProperty Name="AreaCode" ColumnName="AreaCode" />
+          <ScalarProperty Name="Tel" ColumnName="Tel" />
+          <ScalarProperty Name="Phone" ColumnName="Phone" />
+          <ScalarProperty Name="IsPass" ColumnName="IsPass" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Modified" ColumnName="Modified" />
+          <ScalarProperty Name="ModifyTime" ColumnName="ModifyTime" />
+          <ScalarProperty Name="Creator" ColumnName="Creator" />
+          <ScalarProperty Name="CreateTime" ColumnName="CreateTime" />
+          <ScalarProperty Name="DelFlag" ColumnName="DelFlag" />
+          <ScalarProperty Name="LevelRecords" ColumnName="LevelRecords" />
+          <ScalarProperty Name="MassesSatisfy" ColumnName="MassesSatisfy" />
+          <ScalarProperty Name="IsSearch" ColumnName="IsSearch" />
+          <ScalarProperty Name="IsOverTime" ColumnName="IsOverTime" />
+          <ScalarProperty Name="ExecuteRes" ColumnName="ExecuteRes" />
+          <ScalarProperty Name="ComplainType" ColumnName="ComplainType" />
+          <ScalarProperty Name="AboutFile" ColumnName="AboutFile" />
+          <ScalarProperty Name="ComplainProfileContent" ColumnName="ComplainProfileContent" />
+          <ScalarProperty Name="ComplainCode" ColumnName="ComplainCode" />
+          <ScalarProperty Name="ComplainAcceptTime" ColumnName="ComplainAcceptTime" />
+          <ScalarProperty Name="ComplainFrmSourceId" ColumnName="ComplainFrmSourceId" />
+          <ScalarProperty Name="OtherPer" ColumnName="OtherPer" />
+          <ScalarProperty Name="CompanyPerId" ColumnName="CompanyPerId" />
+          <ScalarProperty Name="CompanyInfoId" ColumnName="CompanyInfoId" />
+          <ScalarProperty Name="CompanyInfo" ColumnName="CompanyInfo" />
+          <ScalarProperty Name="ID" ColumnName="ID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

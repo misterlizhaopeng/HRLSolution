@@ -1,0 +1,38 @@
+﻿@{
+    Layout = null;
+}
+
+<div class="bjui-pageContent">
+    <form id="dockEdit" class="pageForm" action="@Url.Action("Edit", "HRL")" data-toggle="validate" data-callback="onEditSuccuss">
+        <div>
+            <table class="table table-condensed table-hover">
+                                    <tr>
+                                        <td>
+                                            <label class="control-label x150">旧密码：</label>
+                                            <input name="FAX" type="text" size="20" value="" />
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <label class="control-label x150">新密码：</label>
+                                            <input name="FAX" type="text" size="20" value="" />
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                <td>
+                    <label class="control-label x150">验证新密码：</label>
+                    <input name="EMAIL" type="text" size="20" value="" />
+                </td>
+                </tr>
+                                </table> 
+        </div>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close">关闭</button></li>
+        <li><button type="submit" class="btn-default">保存</button></li>
+    </ul>
+</div>

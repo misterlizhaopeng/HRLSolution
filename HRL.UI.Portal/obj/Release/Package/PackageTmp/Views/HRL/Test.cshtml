@@ -1,0 +1,136 @@
+﻿@{
+    Layout = null;
+    ViewBag.Title = "Test";
+}
+
+<script type="text/javascript">
+    $(document).on(BJUI.eventType.afterInitUI, function (e) {
+        $('#costbody tr').contextMenu('costmenu',
+{
+    bindings:
+    {
+        'edit': function (t, target) {
+            $(t).find("#edit").click();
+            $(t).alertmsg('ok', '编辑成功！')
+        },
+        'delete': function (t, target) {
+            $(t).find("#delete").click();
+            $(t).alertmsg('ok', '删除成功！')
+        }
+    },
+    onShowMenu: function (e, menu) {
+        $("#detail", menu).css('display', 'none');
+        $("#edit", menu).css('display', '');
+        $("#delete", menu).css('display', '');
+        $(e.currentTarget).addClass("selected");
+        $(e.currentTarget).siblings().removeClass("selected");
+        return menu;
+    }
+});
+    });
+
+    $('#btndefault').click(function () {
+        $(this).alertmsg('ok', '查询成功');
+    });
+</script>
+@*<div class="bjui-pageHeader">
+        <form id="pagerForm" data-toggle="ajaxsearch" action="@Url.Action("Index", "Cost")" method="post">
+            <div class="bjui-searchBar">
+                <a href="@Url.Action("Create", "Cost", new { htid = 1, cbid = 2 })" class="btn btn-green" data-icon="plus" data-toggle="dialog" data-width="700" data-height="400" data-id="dialog-Edit" data-mask="true">增加</a>
+            </div>
+        </form>
+    </div>*@
+<div class="bjui-pageHeader">
+    <form id="pagerForm" data-toggle="ajaxsearch" action="/" method="post">
+        <div class="bjui-searchBar">
+            <label>类型：</label><input type="text" id="customNo" value="" name="code" class="form-control" size="10">&nbsp;
+            <label>状态:</label>
+            <select name="type" data-toggle="selectpicker">
+                <option value="">全部</option>
+                <option value="1">联络</option>
+            </select>&nbsp;
+            <a id="btndefault" data-icon="search" class="btn btn-green">查询</a>&nbsp;
+            <div class="pull-right">
+                <div class="btn-group">
+                    <button type="button" class="btn-default dropdown-toggle" data-toggle="dropdown" data-icon="copy">复选框-批量操作<span class="caret"></span></button>
+                    <ul class="dropdown-menu right" role="menu">
+                        <li><a href="book1.xlsx" data-toggle="doexport" data-confirm-msg="确定要导出信息吗？">导出<span style="color: green;">全部</span></a></li>
+                        <li><a href="book1.xlsx" data-toggle="doexportchecked" data-confirm-msg="确定要导出选中项吗？" data-idname="expids" data-group="ids">导出<span style="color: red;">选中</span></a></li>
+                        <li class="divider"></li>
+                        <li><a href="ajaxDone2.html" data-toggle="doajaxchecked" data-confirm-msg="确定要删除选中项吗？" data-idname="delids" data-group="ids">删除选中</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+<div class="bjui-pageContent">
+    <form id="VMForm" class="pageForm" data-toggle="validate" data-callback="onEditSuccess">
+        <table class="table table-bordered table-hover table-striped table-top" data-selected-multi="false">
+            <thead>
+                <tr>
+                    <th align="center">审核</th>
+                    <th align="center">单位</th>
+                    <th align="center">姓名</th>
+                    <th align="center">填写时间</th>
+                    <th align="center">风险总数</th>
+                    <th align="center">一级风险</th>
+                    <th align="center">二级风险</th>
+                    <th align="center">三级风险</th>
+                    <th align="center">风险等级</th>
+                    <th align="center">风险指数</th>
+                    <th align="center" width="1" style="display:none"></th>
+                    <th align="center" style="display:none">操作</th>
+                </tr>
+            </thead>
+            <tbody id="costbody">
+                @for (int i = 0; i < 150; i++)
+                {
+                    <tr ondblclick="javascript: $('#detail', this).click();">
+                        <td><a href="javascrpt:void;" style="cursor:pointer;" onclick="toApp()">审核</a></td>
+                        <td>香港中路街道</td>
+                        <td>user371</td>
+                        <td>2013-01-31</td>
+                        <td>2 个</td>
+                        <td>0 个</td>
+                        <td>2 个</td>
+                        <td>0 个</td>
+                        <td>1级别</td>
+                        <td>56</td>
+                        <td style="display:none">
+                            <a href="@Url.Action("Delete", "HRL")" id="edit" data-toggle="doajax"></a>
+                            <a href="@Url.Action("Delete", "HRL")" id="delete" data-toggle="doajax"></a>
+                        </td>
+                    </tr> }
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <div class="pages">
+        <span>每页&nbsp;</span>
+        <div class="selectPagesize">
+            <select data-toggle="selectpicker" data-toggle-change="changepagesize">
+                <option value="30">30</option>
+                <option value="60">60</option>
+                <option value="120">120</option>
+                <option value="150">150</option>
+            </select>
+        </div>
+        <span>&nbsp;条，共 600 条</span>
+    </div>
+    <div class="pagination-box" data-toggle="pagination" data-total="600" data-page-size="30" data-page-current="1">
+    </div>
+</div>
+<div id="costmenu" class="contextMenu" style="display:none;">
+    <ul>
+        <li id="edit">
+            <span class="icon"><i class="fa fa-remove"></i></span>编辑
+        </li>
+        <li id="delete">
+            <span class="icon"><i class="fa fa-remove"></i></span>删除
+        </li>
+    </ul>
+</div>

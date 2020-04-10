@@ -1,0 +1,88 @@
+﻿@using HRL.BLL;
+@using HRL.Model;
+@{
+    Layout = null;
+    var ShowModel = ViewBag.ShowModel as Base_RolesInfo;
+}
+<script>
+    var setting = {
+        check: {
+            enable: true
+        },
+        data: {
+            simpleData: {
+                enable: true,
+                open: true
+            }
+        }
+        ,
+        callback: {
+            onCheck: zTreeOnCheck
+        }
+    };
+    var zNodes = [
+         @Html.Raw(ViewBag.SelectMenuInfo)
+    ];
+    function zTreeOnCheck(e, treeId, treeNode) {  //这是将所有选中节点的名字 用,分割做拼接 用于持久化到数据库  
+        var curNodeStatus = treeNode.getCheckStatus();
+        $('#menus').val('');
+        var zTree = $.fn.zTree.getZTreeObj("objMenus").getCheckedNodes();//. getChangeCheckedNodes();//.getNodesByFilter(filter);
+        var choose = "", ids = '';
+      
+        for (var i = 0; i < zTree.length; i++) {
+            if (zTree[i].name != null)
+            {
+                choose += (i == (zTree.length - 1)) ? zTree[i].name : zTree[i].name + ",";
+                ids += (i == (zTree.length - 1)) ? zTree[i].id : zTree[i].id + ",";
+            }
+        }
+        $('#menus').val(ids);
+    }
+    var code;
+    function showCode(str) {
+        if (!code) code = $("#code");
+        code.empty();
+        code.append("<li>" + str + "</li>");
+    }
+    $.fn.zTree.init($("#objMenus"), setting, zNodes);
+    var treeObj = $.fn.zTree.getZTreeObj("objMenus");
+    //展开全部
+    treeObj.expandAll(true);
+</script>
+<div class="bjui-pageContent">
+    <form id="tradePlanEdit" class="pageForm" action="@Url.Action("Edit", "Base_RolesInfo")" data-to data-toggle="validate" data-callback="onEditSuccuss">
+        <input type="hidden" name="Id" value="@ShowModel.Id" />
+        <table class="tableContent">
+            <tbody>
+
+                <tr>
+                    <td>
+                        <label class="control-label x120">@GlobalLngResource.GetRes("RoleName", "Base_RolesInfo")：</label>
+
+                        <input type="text" name="RoleName" id="RoleName" value="@ShowModel.RoleName" data-rule="required;maxSize(128)" size="20" />
+                    </td>
+                    <td>
+                        <label class="control-label x120">@GlobalLngResource.GetRes("OrderBy", "Base_RolesInfo")：</label>
+                        <input name="OrderBy" type="text" size="20" value="@ShowModel.OrderBy" data-rule="digits" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="hidden" name="menus"  id="menus" value="@ViewBag.DefaultMenus" />
+                        <label style="float:left;"class=" control-label x120">@GlobalLngResource.GetRes("MenuName", "Base_MenuInfo")：</label>
+                        <div style="float:left; width:200px;height:200px; overflow-y:scroll; overflow-x:scroll; ">
+                            <ul id="objMenus" class="ztree"></ul>
+                        </div>
+                        <div style="clear:both;"></div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close">@GlobalLngResource.GetRes("Close")</button></li>
+        <li><button type="submit" class="btn-default">@GlobalLngResource.GetRes("Save")</button></li>
+    </ul>
+</div>

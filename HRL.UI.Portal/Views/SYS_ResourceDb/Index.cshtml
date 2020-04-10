@@ -1,0 +1,72 @@
+﻿@using UnipecERPBridge.EF;
+@using UnipecERPBridge.EF.Common;
+@{
+    var resList = ViewBag.ResourceList as List<LNG_SYS_TABLELANG_INFO>;
+    var  menuList = ViewBag.MenuNameList as Dictionary<string,string>;
+    string lang = ViewContext.Controller.ValueProvider.GetValue("lang").RawValue.ToString();
+}
+<div class="bjui-pageHeader">
+    <script type="text/javascript">
+        //刷新回调
+        function refresh() {
+            debugger
+            var a = $("#menuid").val();
+            $(this).navtab('reload', { url: '@Url.Action("Index")?MENUCODE=' + a });
+        }
+        function gonatb(json) {
+            debugger
+            $(this).bjuiajax('ajaxDone', json)
+                    .navtab('refresh');
+        }
+    </script>
+    <form id="pagerForm" data-toggle="ajaxsearch" action="@Url.Action("Index")" method="post">
+        <div class="bjui-searchBar">
+            <label> @GlobalLngResource.GetRes("ManageModelName") :</label>
+            <select name="MENUCODE" id="MENUCODE" data-toggle="selectpicker" data-width="180">
+                <option value="all"></option>
+                @foreach (var menu in menuList)
+                {
+                    <option value="@menu.Key" @if (menu.Key == ViewBag.ResourceCode) { Write("selected"); }>
+                        @menu.Value
+                    </option>
+                }
+            </select>
+            <button type="submit" class="btn-default" data-icon="search">@GlobalLngResource.GetRes("Search")</button>&nbsp;
+            <a href="@Url.Action("AddLangIndex", "SYS_ResourceDb")" data-toggle="navtab" data-id="navtab-form" data-title="多语言模块" class="btn btn-default">@GlobalLngResource.GetRes("AddRecord")</a>
+        </div>
+    </form>
+</div>
+<div class="bjui-pageContent tableContent">
+    <form action="@Url.Action("SaveAllResource")" data-callback="refresh" id="j_custom_form" class="pageForm" data-toggle="validate" method="post">
+        <input id="menuid" type="hidden" name="MENUCODE" value="@ViewBag.ResourceCode" />
+        <table id="tabledit1" class="table table-bordered table-hover table-striped table-top" data-toggle="tabledit" data-initnum="0" data-action="@Url.Action("SaveResource")" data-single-noindex="true">
+            <thead>
+                <tr>
+                    <th hidden="hidden"><input name="customList[#index#].ID" type="text" id="customList[#index#].ID"></th>
+                    <th title="@GlobalLngResource.GetRes("Value")"><input type="text" name="customList[#index#].Value" data-rule="required"></th>
+                    <th title="@GlobalLngResource.GetRes("Notes")"></th>
+                    <th title="@GlobalLngResource.GetRes("Operation")" width="130"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var res in resList)
+                {
+                    <tr>
+                        <td hidden="hidden">@res.ID</td>
+                        <td>@res.COLUMN_NAME</td>
+                        <td>@res.COLUMN_NAME</td>
+                        <td data-noedit="true">
+                            <button type="button" class="fa fa-edit" data-toggle="doedit" data-callback="refresh"></button>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="submit" class="btn-default" data-icon="save">@(GlobalLngResource.GetRes("All") + GlobalLngResource.GetRes("Save"))</button></li>
+    </ul>
+</div>
+

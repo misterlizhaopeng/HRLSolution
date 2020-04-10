@@ -1,0 +1,7 @@
+F:\HRLSolution\HRLSolution\HRL.Common\bin\Release\HRL.Common.dll
+F:\HRLSolution\HRLSolution\HRL.Common\bin\Release\HRL.Common.pdb
+F:\HRLSolution\HRLSolution\HRL.Common\bin\Release\log4net.dll
+F:\HRLSolution\HRLSolution\HRL.Common\bin\Release\Newtonsoft.Json.dll
+F:\HRLSolution\HRLSolution\HRL.Common\obj\Release\HRL.Common.dll
+F:\HRLSolution\HRLSolution\HRL.Common\obj\Release\HRL.Common.pdb
+F:\HRLSolution\HRLSolution\HRL.Common\obj\Release\HRL.Common.csprojResolveAssemblyReference.cache

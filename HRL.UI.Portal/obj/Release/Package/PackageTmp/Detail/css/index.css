@@ -1,0 +1,63 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html, body,.index-bg {
+    background-image:url('../img/bg1.png');
+    background-size: contain;
+    height: 98%;
+}
+ td {
+    text-align: right;
+    font-size: 14px;
+}
+
+.hei {
+    line-height: 35px;
+}
+.index-bg{
+	position: relative;
+}
+.login-div{
+	position: absolute;
+	top:50%;
+	left:50%;
+	margin:-120px auto auto -320px; 
+	background:rgb(1,90,150);
+	background-image: url('../img/police.png');
+    /*filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/police.png',sizingMethod='scale');*/
+	background-size: contain;
+	background-repeat: no-repeat;
+	width: 640px;
+	height: 250px;
+	border: 1px solid gray;
+	border-radius: 5px; 
+}
+.login-div-title{
+	background-image: url('../img/police-title.png');
+	background-size: contain;
+    /*filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(src='../img/police-title.png',sizingMethod='scale');*/
+	background-repeat: no-repeat;
+	position: absolute;
+	width: 280px;
+	right: 20px;
+	color:white;
+	line-height: 70px;
+}
+.login-div-title h4 {
+    margin-left:75px;
+}
+.login-table{
+	position: absolute;
+	right: 20px;
+	top:90px;
+}
+input{
+	line-height: 20px;
+	border-radius: 5px;
+	width: 100%;
+}
+td{
+	color:white;
+}

@@ -1,0 +1,247 @@
+﻿@using HRL.BLL;
+@using HRL.Model;
+@using HRL.Model.Enums;
+
+@{
+    Layout = null;
+    var ShowModel = ViewBag.ShowModel as Bus_EffciencyComplain;
+    Sys_MultiLangInfoService langService = new Sys_MultiLangInfoService();
+
+    var complainsourceList = langService.GetLangData(EffciencyComplainEnum.Bus_EffciencyComplain_ComplainFrmSource.ToString());
+    var commpanyList = langService.GetLangData(EffciencyComplainEnum.Bus_EffciencyComplain_CompanyInfoId.ToString());
+    var commpanyPersList = langService.GetLangData(EffciencyComplainEnum.Bus_EffciencyComplain_CompanyPerId.ToString());
+    var complainTypeList = langService.GetLangData(EffciencyComplainEnum.Bus_TakeErrorAttribute_AttributeIDItem.ToString());
+    var executeRes = langService.GetLangData(EffciencyComplainEnum.Bus_EffComplExeRes_ExecuteResIdItem.ToString());
+}
+
+
+<div class="bjui-pageContent">
+    <form id="tradePlanEdit" class="pageForm" action="@Url.Action("Edit", "Bus_EffciencyComplain")" data-to data-toggle="validate" data-callback="onEditSuccuss">
+        <input type="hidden" name="Id" value="@ShowModel.ID" />
+        <table>
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <label class="control-label x120">@GlobalLngResource.GetRes("_Companyperson", "Bus_EffciencyComplain")：</label>
+                        <input name="CompanyInfo" type="text" data-rule="maxSize(256)" value="@ShowModel.CompanyInfo" />
+                        <select data-toggle="selectpicker" id="CompanyInfoId" name="CompanyInfoId" data-rule="required">
+                            <option value="all">--查询单位--</option>
+                            @foreach (var source in commpanyList)
+                            {
+                                <option value="@source.ID" @if (source.ID == @ShowModel.CompanyInfoId) { Write("selected"); }>
+                                    @source.COLUMN_NAME
+                                </option>
+                            }
+                        </select>
+                        <select data-toggle="selectpicker" id="CompanyPerId" name="CompanyPerId" data-rule="required">
+                            <option value="all">--选择人员--</option>
+                            @foreach (var source in commpanyPersList)
+                            {
+                                <option value="@source.ID" @if (source.ID == @ShowModel.CompanyPerId) { Write("selected"); }>
+                                    @source.COLUMN_NAME
+                                </option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="control-label x120">@GlobalLngResource.GetRes("_OtherPer", "Bus_EffciencyComplain")：</label>
+                        <input name="OtherPer" type="text" value="@ShowModel.OtherPer" data-rule="maxSize(256)" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="control-label x120">投诉人手机：</label>
+                        <input name="Phone" type="text" value="@ShowModel.Phone" data-rule="maxSize(16)" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="control-label x120">投诉人电话：</label>
+                        <input name="AreaCode" size="6" type="text" value="@ShowModel.AreaCode" data-rule="maxSize(8)" />-<input name="Tel" size="13" type="text" value="@ShowModel.Tel" data-rule="maxSize(16)" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="control-label x120">被投诉人电话：</label>
+                        <input name="ComplainAreaCode" size="6" type="text" value="@ShowModel.ComplainAreaCode" data-rule="maxSize(8)" />-<input name="ComplainTel" size="13" type="text" value="@ShowModel.ComplainTel" data-rule="maxSize(16)" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="control-label x120">@GlobalLngResource.GetRes("_ComplainFrmSource", "Bus_EffciencyComplain")：</label>
+                        @*<input name="CreateTime" type="text" data-toggle="datepicker" data-pattern="yyyy-MM-dd" size="15" value="@ShowModel.CreateTime" data-rule="required" />*@
+                        <select data-toggle="selectpicker" id="ComplainFrmSourceId" name="ComplainFrmSourceId" data-rule="required">
+                            <option value="all">--请选择--</option>
+                            @foreach (var commpany in complainsourceList)
+                            {
+                                <option value="@commpany.ID" @if (commpany.ID == @ShowModel.ComplainFrmSourceId) { Write("selected"); }>
+                                    @commpany.COLUMN_NAME
+                                </option>
+                            }
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="control-label x120">@GlobalLngResource.GetRes("_ComplainAcceptTime", "Bus_EffciencyComplain")：</label>
+                        <input name="ComplainAcceptTime" type="text" data-toggle="datepicker" data-pattern="yyyy-MM-dd" size="15" value="@ShowModel.ComplainAcceptTime" data-rule="required" />
+                        @* <input name="ResCompany" type="text" value="@ShowModel.ResCompany" size="10" />
+                                <select data-toggle="selectpicker" id="ResCompanyId" name="ResCompanyId" data-rule="required">
+                                <option value="all">--请选择--</option>
+                                @foreach (var commpany in commpanyList)
+                                {
+                                    <option value="@commpany.ID" @if (commpany.ID == @ShowModel.ResCompanyId) { Write("selected"); }>
+                                        @commpany.COLUMN_NAME
+                                    </option>
+                                }
+                            </select>*@
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="control-label x120">@GlobalLngResource.GetRes("_ComplainCodeAll", "Bus_EffciencyComplain")：</label>
+                        <input name="ComplainCode" type="text" value="@ShowModel.ComplainCode" data-rule="maxSize(128)" />
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="control-label x120">@GlobalLngResource.GetRes("_ComplainContent", "Bus_EffciencyComplain")：</label>
+                        @*<input name="ComplainProfileContent" type="text" value="@ShowModel.ComplainProfileContent" data-rule="maxSize(1024)" />*@
+                        <textarea name="ComplainProfileContent" cols="40">@ShowModel.ComplainProfileContent</textarea>
+                        @*<div style="margin-left:120px;">
+                                @{
+                                    var i = 1;
+                                    foreach (var atrr in attrList)
+                                    {
+                                        var isChecked = false;
+                                        if (ShowModel.AttrList != null)
+                                        {
+                                            if (ShowModel.AttrList.Where(a => a.AttributeIDItem == atrr.ID).ToList().Count > 0) { isChecked = true; }
+                                        }
+                                        <label><input name="AttributeIds" type="checkbox" value="@atrr.ID" @if (isChecked) { Write("checked"); } /> @atrr.COLUMN_NAME</label>
+                                        if (i % 3 == 0)
+                                        {
+                                            <br />
+                                        }
+                                        i++;
+                                    }
+                                }
+                            </div>*@
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="control-label x120"> 相关附件：</label>
+                        <input type="file"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="control-label x120">@GlobalLngResource.GetRes("_ComplainType", "Bus_EffciencyComplain")：</label>
+                        <select data-toggle="selectpicker" id="ComplainType" name="ComplainType">
+                            <option value="all">--请选择--</option>
+                            @foreach (var commpany in complainTypeList)
+                            {
+                                <option value="@commpany.ID" @if (commpany.ID == @ShowModel.ComplainType) { Write("selected"); }>
+                                    @commpany.COLUMN_NAME
+                                </option>
+                            }
+                        </select>
+                    </td>
+                    @*<td>
+                            <label class="control-label x120">@GlobalLngResource.GetRes("OkTime", "Bus_TakeError")：</label>
+                            <input name="OkTime" type="text" value="@ShowModel.OkTime" data-toggle="datepicker" data-pattern="yyyy-MM-dd" size="15" />
+                        </td>*@
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="control-label x120">@GlobalLngResource.GetRes("_ExecuteSome", "Bus_EffciencyComplain")：</label>
+                        <div style="margin-left:120px;">
+                            @{
+                                var i = 1;
+                                foreach (var atrr in executeRes)
+                                {
+                                    var isChecked = false;
+                                    if (ShowModel.AttrList != null)
+                                    {
+                                        if (ShowModel.AttrList.Where(a => a.ExecuteResIdItem == atrr.ID).ToList().Count > 0) { isChecked = true; }
+                                    }
+                                    <label><input name="ExecuteResIds" type="checkbox" value="@atrr.ID" @if (isChecked) { Write("checked"); } /> @atrr.COLUMN_NAME</label>
+                                    if (i % 3 == 0)
+                                    {
+                                        <br />
+                                    }
+                                    i++;
+                                }
+                            }
+                        </div>
+                    </td>
+                </tr>
+
+
+                <tr>
+                    <td colspan="2">
+                        <label class="control-label x120">@GlobalLngResource.GetRes("_IsOver", "Bus_EffciencyComplain")：</label>
+                        <label><input name="IsOverTime" type="radio" value="1" @if (ShowModel.IsOverTime == 1) { Write("checked"); } />是</label>
+                        <label><input name="IsOverTime" type="radio" value="0" @if (ShowModel.IsOverTime == 0) { Write("checked"); } />否</label>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="control-label x120">@GlobalLngResource.GetRes("_IsTrue", "Bus_EffciencyComplain")：</label>
+                        <label><input name="IsSearch" type="radio" value="1" @if (ShowModel.IsSearch == 1) { Write("checked"); } />是</label>
+                        <label><input name="IsSearch" type="radio" value="0" @if (ShowModel.IsSearch == 0) { Write("checked"); } />否</label>
+                    </td>
+                </tr>
+                @*<tr>
+                        <td>
+                            <label class="control-label x120">@GlobalLngResource.GetRes("OverQuality", "Bus_TakeError")：</label>
+                            <select data-toggle="selectpicker" id="OverQuality" name="OverQuality">
+                                <option value="all">--请选择--</option>
+                                @foreach (var over in overList)
+                                {
+                                    <option value="@over.ID" @if (over.ID == ShowModel.OverQuality) { Write("selected"); }>
+                                        @over.COLUMN_NAME
+                                    </option>
+                                }
+                            </select>
+                        </td>
+                        <td>
+                            <label class="control-label x120">@GlobalLngResource.GetRes("Remark", "Bus_TakeError")：</label>
+                            <input name="Remark" type="text" size="20" value="@ShowModel.Remark" />
+                        </td>
+                    </tr>*@
+
+                <tr>
+                    <td colspan="2">
+                        <label class="control-label x120">@GlobalLngResource.GetRes("_IsOk", "Bus_EffciencyComplain")：</label>
+                        <label><input name="MassesSatisfy" type="radio" value="1" @if (ShowModel.MassesSatisfy == 1) { Write("checked"); } />满意</label>
+                        <label><input name="MassesSatisfy" type="radio" value="0" @if (ShowModel.MassesSatisfy == 0) { Write("checked"); } />不满意</label>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <label class="control-label x120">@GlobalLngResource.GetRes("_LevelGrade", "Bus_EffciencyComplain")：</label>
+                        <label><input type="radio" name="LevelRecords" value="1" @if (ShowModel.LevelRecords == 1) { Write("checked"); } />优</label>
+                        <label><input type="radio" name="LevelRecords" value="2" @if (ShowModel.LevelRecords == 2) { Write("checked"); } />良</label>
+                        <label><input type="radio" name="LevelRecords" value="3" @if (ShowModel.LevelRecords == 3) { Write("checked"); } />中</label>
+                        <label><input type="radio" name="LevelRecords" value="4" @if (ShowModel.LevelRecords == 4) { Write("checked"); } />差</label>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close">@GlobalLngResource.GetRes("Close")</button></li>
+        <li><button type="submit" class="btn-default">@GlobalLngResource.GetRes("Save")</button></li>
+    </ul>
+</div>

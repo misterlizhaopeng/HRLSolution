@@ -1,0 +1,218 @@
+﻿@using HRL.BLL;
+@{
+    Layout = null;
+    var role = ViewBag.role as String;
+}
+
+<div class="bjui-pageContent">
+    <div>
+        <h6 style="color:green">>>您现在的位置：权力运行监督中心。</h6>
+        <hr style="width:auto" />
+    </div>
+
+    @if (role == "1")
+    {   <div>
+        <div class="panel panel-default">
+            <div class="panel-heading"><h3 class="panel-title"><i class="fa fa-bar-chart-o fa-fw"></i>柱状/拆线图</h3></div>
+            <div class="panel-body">
+                <div style="height:350px" data-toggle="echarts" data-type="pie,funnel"
+                     data-url="@Url.Action("PieData", "Bus_EffciencyComplain")"></div>@*http://demo.b-jui.com/1.2/echarts-barData.html*@
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div>
+            <table data-toggle="tablefixed" data-width="100%" data-nowrap="true">
+                <thead>
+                    <tr>
+                        <th align="center">单位</th>
+                        <th align="center">事项内容</th>
+                        <th align="center">类别</th>
+                        <th align="center">预算金额</th>
+                        <th align="center">资金来源</th>
+                        <th align="center"> 时间 </th>
+                        <th align="center"> 会议记录 </th>
+                        <th align="center"> 表决记录 </th>
+                        <th align="center"> 时间 </th>
+                        <th align="center"> 状态 </th>
+                        <th align="center" style="display:none"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ondblclick="javascript: $('#detail', this).click();">
+                        <td>【街道】</td>
+                        <td>赵四</td>
+                        <td>自办</td>
+                        <td>2013/4/21 0:00:00</td>
+                        <td>3d</td>
+                        <td>工作推诿或敷衍塞责 </td>
+                        <td></td>
+                        <td>审核通过</td>
+                        <td>2018年4月21日01:46:33</td>
+                        <td>审核通过</td>
+
+                    </tr>
+                    <tr ondblclick="javascript: $('#detail', this).click();">
+                        <td>【街道】</td>
+                        <td>张三</td>
+                        <td>市转办</td>
+                        <td>2018/4/20 0:00:00</td>
+                        <td>ss</td>
+                        <td>其他</td>
+                        <td></td>
+                        <td>未知</td>
+                        <td>2018年4月21日01:46:33</td>
+                        <td>审核通过</td>
+
+
+                    </tr>
+                    <tr ondblclick="javascript: $('#detail', this).click();">
+                        <td>【法检察院】</td>
+                        <td>李四</td>
+                        <td>自办</td>
+                        <td>2018/4/20 0:00:00</td>
+                        <td>1230</td>
+                        <td>违反规定乱收费乱罚款乱摊派</td>
+                        <td></td>
+                        <td>未知</td>
+                        <td>2018年4月21日01:46:33</td>
+                        <td>审核通过</td>
+
+
+                    </tr>
+                    <tr ondblclick="javascript: $('#detail', this).click();">
+                        <td>【安徽省】</td>
+                        <td>张三</td>
+                        <td>自办</td>
+                        <td>2018/4/20 0:00:00</td>
+                        <td>44</td>
+                        <td></td>
+                        <td></td>
+                        <td>未知</td>
+                        <td>2018年4月21日01:46:33</td>
+                        <td>审核通过</td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    }
+</div>
+
+<div class="bjui-pageFooter">
+    <ul>
+        <li>
+
+        </li>
+    </ul>
+</div>
+
+
+
+@*<div class="bjui-pageHeader">
+        <form id="pagerForm" data-toggle="ajaxsearch" action="@Url.Action("Index", "HRL")" method="post">
+            <div class="bjui-searchBar">
+                <label>@GlobalLngResource.GetRes("ComplainFrmSourceIdName", "Bus_EffciencyComplain")：</label>
+                <input type="text" id="EndCreateTime" data-toggle="datepicker" data-pattern="yyyy-MM-dd" size="12" value="" name="EndCreateTime" class="form-control" size="10">
+                <button type="submit" class="btn-default" data-icon="search">@GlobalLngResource.GetRes("Search")</button>&nbsp;
+            </div>
+        </form>
+    </div>
+    <div class="bjui-pageContent tableContent">
+        <!--变化的地方-->
+        <table data-toggle="tablefixed" data-width="100%" data-nowrap="true">
+            <thead>
+                <tr>
+                    <th align="center">@GlobalLngResource.GetRes("CompanyInfoIdName", "Bus_EffciencyComplain")</th>
+                    <th align="center">@GlobalLngResource.GetRes("CompanyPerIdName", "Bus_EffciencyComplain")</th>
+                    <th align="center">@GlobalLngResource.GetRes("ComplainFrmSourceIdName", "Bus_EffciencyComplain")</th>
+                    <th align="center">@GlobalLngResource.GetRes("ComplainAcceptTime", "Bus_EffciencyComplain")</th>
+                    <th align="center">@GlobalLngResource.GetRes("ComplainCode", "Bus_EffciencyComplain")</th>
+                    <th align="center">@GlobalLngResource.GetRes("ComplainTypeName", "Bus_EffciencyComplain")</th>
+                    <th align="center">@GlobalLngResource.GetRes("State", "Bus_EffciencyComplain")</th>
+                    <th align="center">@GlobalLngResource.GetRes("IsPass", "Bus_TakeError")</th>
+                    <th align="center" style="display:none"></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr ondblclick="javascript: $('#detail', this).click();">
+                    <td>【街道】</td>
+                    <td>赵四</td>
+                    <td>自办</td>
+                    <td>2013/4/21 0:00:00</td>
+                    <td>3d</td>
+                    <td>工作推诿或敷衍塞责 </td>
+                    <td></td>
+                    <td>审核通过</td>
+                    <td style="display:none">
+                        <a href="/Bus_EffciencyComplain/Detail/c7d51b45-8493-473b-a357-b64824528970" id="detail" class="btn btn-blue" data-toggle="dialog" data-width="750" data-height="450" data-id="dialog-mask" data-mask="true" data-title="详情"></a>
+                        <a href="/Bus_EffciencyComplain/Edit/c7d51b45-8493-473b-a357-b64824528970" id="edit" class="btn btn-green" data-toggle="dialog" data-width="750" data-height="600" data-id="dialog-mask" data-mask="true" data-title="编辑"></a>
+                        <a href="/Bus_EffciencyComplain/Delete/c7d51b45-8493-473b-a357-b64824528970" id="delete" class="btn btn-red" data-toggle="doajax" data-confirm-msg="确认删除吗？" data-callback="onDeleteSuccess">删除</a>
+                        <a href="/Bus_EffciencyComplain/Review/c7d51b45-8493-473b-a357-b64824528970" id="review" class="btn btn-blue" data-toggle="doajax" data-confirm-msg="确认审核吗？" data-callback="onRefreshCurPage">审核</a>
+                    </td>
+                </tr>
+                <tr ondblclick="javascript: $('#detail', this).click();">
+                    <td>【街道】</td>
+                    <td>张三</td>
+                    <td>市转办</td>
+                    <td>2018/4/20 0:00:00</td>
+                    <td>ss</td>
+                    <td>其他</td>
+                    <td></td>
+                    <td>未知</td>
+                    <td style="display:none">
+                        <a href="/Bus_EffciencyComplain/Detail/0a0d5a57-f1e6-46f0-b510-56ca53e6c019" id="detail" class="btn btn-blue" data-toggle="dialog" data-width="750" data-height="450" data-id="dialog-mask" data-mask="true" data-title="详情"></a>
+                        <a href="/Bus_EffciencyComplain/Edit/0a0d5a57-f1e6-46f0-b510-56ca53e6c019" id="edit" class="btn btn-green" data-toggle="dialog" data-width="750" data-height="600" data-id="dialog-mask" data-mask="true" data-title="编辑"></a>
+                        <a href="/Bus_EffciencyComplain/Delete/0a0d5a57-f1e6-46f0-b510-56ca53e6c019" id="delete" class="btn btn-red" data-toggle="doajax" data-confirm-msg="确认删除吗？" data-callback="onDeleteSuccess">删除</a>
+                        <a href="/Bus_EffciencyComplain/Review/0a0d5a57-f1e6-46f0-b510-56ca53e6c019" id="review" class="btn btn-blue" data-toggle="doajax" data-confirm-msg="确认审核吗？" data-callback="onRefreshCurPage">审核</a>
+                    </td>
+                </tr>
+                <tr ondblclick="javascript: $('#detail', this).click();">
+                    <td>【法检察院】</td>
+                    <td>李四</td>
+                    <td>自办</td>
+                    <td>2018/4/20 0:00:00</td>
+                    <td>1230</td>
+                    <td>违反规定乱收费乱罚款乱摊派</td>
+                    <td></td>
+                    <td>未知</td>
+                    <td style="display:none">
+                        <a href="/Bus_EffciencyComplain/Detail/b3d9c4a8-10c2-4fa9-9f93-e5e8538421e3" id="detail" class="btn btn-blue" data-toggle="dialog" data-width="750" data-height="450" data-id="dialog-mask" data-mask="true" data-title="详情"></a>
+                        <a href="/Bus_EffciencyComplain/Edit/b3d9c4a8-10c2-4fa9-9f93-e5e8538421e3" id="edit" class="btn btn-green" data-toggle="dialog" data-width="750" data-height="600" data-id="dialog-mask" data-mask="true" data-title="编辑"></a>
+                        <a href="/Bus_EffciencyComplain/Delete/b3d9c4a8-10c2-4fa9-9f93-e5e8538421e3" id="delete" class="btn btn-red" data-toggle="doajax" data-confirm-msg="确认删除吗？" data-callback="onDeleteSuccess">删除</a>
+                        <a href="/Bus_EffciencyComplain/Review/b3d9c4a8-10c2-4fa9-9f93-e5e8538421e3" id="review" class="btn btn-blue" data-toggle="doajax" data-confirm-msg="确认审核吗？" data-callback="onRefreshCurPage">审核</a>
+                    </td>
+                </tr>
+                <tr ondblclick="javascript: $('#detail', this).click();">
+                    <td>【安徽省】</td>
+                    <td>张三</td>
+                    <td>自办</td>
+                    <td>2018/4/20 0:00:00</td>
+                    <td>44</td>
+                    <td></td>
+                    <td></td>
+                    <td>未知</td>
+                    <td style="display:none">
+                        <a href="/Bus_EffciencyComplain/Detail/04b06b5f-56b6-4579-bc44-c936cf5b605b" id="detail" class="btn btn-blue" data-toggle="dialog" data-width="750" data-height="450" data-id="dialog-mask" data-mask="true" data-title="详情"></a>
+                        <a href="/Bus_EffciencyComplain/Edit/04b06b5f-56b6-4579-bc44-c936cf5b605b" id="edit" class="btn btn-green" data-toggle="dialog" data-width="750" data-height="600" data-id="dialog-mask" data-mask="true" data-title="编辑"></a>
+                        <a href="/Bus_EffciencyComplain/Delete/04b06b5f-56b6-4579-bc44-c936cf5b605b" id="delete" class="btn btn-red" data-toggle="doajax" data-confirm-msg="确认删除吗？" data-callback="onDeleteSuccess">删除</a>
+                        <a href="/Bus_EffciencyComplain/Review/04b06b5f-56b6-4579-bc44-c936cf5b605b" id="review" class="btn btn-blue" data-toggle="doajax" data-confirm-msg="确认审核吗？" data-callback="onRefreshCurPage">审核</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div><div class="bjui-pageFooter">
+        <div class="pages">
+            <span>@GlobalLngResource.GetRes("PerPage")&nbsp;</span>
+            <div class="selectPagesize">
+                <select data-toggle="selectpicker" data-toggle-change="changepagesize">
+                    <option value="20" selected="selected">20</option>
+                    <option value="50">50</option>
+                    <option value="100">100</option>
+                </select>
+            </div>
+
+        </div>
+    </div>*@

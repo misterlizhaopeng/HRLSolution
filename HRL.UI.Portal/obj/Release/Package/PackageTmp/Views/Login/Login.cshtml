@@ -1,0 +1,113 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>廉政预警防控首页</title>
+    <link rel="stylesheet" href="/Detail/css/index.css">
+    <script src="/Scripts/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript">
+        function validIsOK() {
+            var usr = $('#usr').val();
+            var pwd = $('#pwd').val();
+            var validCode = $('#validCode').val();
+            if (!usr) {
+                alert('请输入用户名!');
+                return false;
+            }
+            if (!pwd) {
+                alert('请输入密码!');
+                return false;
+            }
+            if (!validCode) {
+                alert('请输入验证码!');
+                return false;
+            }
+            return true;
+        }
+        function changeCheckCode() {
+            $("#imgCode").attr("src", $("#imgCode").attr("src") + '?_' + Math.random());
+        }
+        $(function () {
+            $(document).keydown(function (e) {
+                if (e.keyCode == 13) {
+                    $('#btnGoLogin').click();
+                }
+            });
+
+            $('#usr').focus(function () {
+                if ($(this).val() == '请输入用户名!') {
+                    $(this).val('');
+                }
+            });
+            $('#btnGoLogin').click(function () {
+                var r = validIsOK();
+                if (!r) {
+                    return;
+                }
+                $.ajax({
+                    cache: true,
+                    type: "POST",
+                    url: '@Url.Action("Login", "Login")',
+                    data: $('#frmId').serialize(),
+                    async: false,
+                    error: function (request) {
+                        alert("连接错误，请联系管理员！");
+                    },
+                    success: function (data) {
+                        if (data.statusCode == 200) {
+                            location = '@Url.Action("Index","HRL")';
+                        }
+                        if (data.statusCode == 300) {
+                            alert(data.message);
+                        }
+                    }
+                });
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="index-bg">
+        <div class="login-div">
+            <div class="login-div-title"><h4>公安系统廉政风险防御平台</h4></div>
+            <form id="frmId">
+                <table class="login-table">
+                    <tbody>
+                        <tr class="hei">
+                            <td>账&nbsp;&nbsp;&nbsp;&nbsp;号&nbsp;</td>
+                            <td width="220" colspan="2">
+                                <input type="text" name="usr" id="usr">
+                            </td>
+                        </tr>
+                        <tr class="hei">
+                            <td>密&nbsp;&nbsp;&nbsp;&nbsp;码&nbsp;</td>
+                            <td width='220' colspan="2">
+                                <input type="password" name="pwd" id="pwd" />
+                            </td>
+                        </tr>
+                        <tr class="hei">
+                            <td>验证码&nbsp;</td>
+                            <td width='220' colspan="2" style="text-align:left">
+                                <input type="text" id="validCode" style="width:130px;vertical-align:middle" name="validCode" />
+                                <img id="imgCode" src="../HandlerFile/Handler1.ashx" onclick="changeCheckCode();" style="cursor:pointer; vertical-align:middle" />
+                            </td>
+                        </tr>
+                        <tr class="hei">
+                            <td></td>
+                            <td width='110'><input type="button" value="登录" id="btnGoLogin" style="background-color:green;color:wheat"></td>
+                            <td width='100' id="tip" style="white-space:nowrap"></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </form>
+        </div>
+    </div>
+    <div style="font-size:12px;text-align:center;">
+        Copyright &copy; 2017 廉政风险防御系统
+    </div>
+</body>
+</html>

@@ -1,0 +1,10 @@
+F:\HRLSolution\HRLSolution\HRL.IDAL\bin\Release\HRL.IDAL.dll
+F:\HRLSolution\HRLSolution\HRL.IDAL\bin\Release\HRL.IDAL.pdb
+F:\HRLSolution\HRLSolution\HRL.IDAL\bin\Release\EntityFramework.dll
+F:\HRLSolution\HRLSolution\HRL.IDAL\bin\Release\HRL.Model.dll
+F:\HRLSolution\HRLSolution\HRL.IDAL\bin\Release\EntityFramework.xml
+F:\HRLSolution\HRLSolution\HRL.IDAL\bin\Release\HRL.Model.pdb
+F:\HRLSolution\HRLSolution\HRL.IDAL\bin\Release\zh-Hans\EntityFramework.resources.dll
+F:\HRLSolution\HRLSolution\HRL.IDAL\obj\Release\HRL.IDAL.dll
+F:\HRLSolution\HRLSolution\HRL.IDAL\obj\Release\HRL.IDAL.pdb
+F:\HRLSolution\HRLSolution\HRL.IDAL\obj\Release\HRL.IDAL.csprojResolveAssemblyReference.cache

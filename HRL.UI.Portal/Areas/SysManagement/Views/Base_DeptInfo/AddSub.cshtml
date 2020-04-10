@@ -1,0 +1,42 @@
+﻿@using HRL.BLL;
+@model HRL.Model.Base_DeptInfo
+@{
+    Layout = null;
+}
+
+<div class="bjui-pageContent">
+    <form id="tradePlanEdit" class="pageForm" action="@Url.Action("AddSub")" data-to data-toggle="validate" data-callback="onEditSuccuss">
+        <input type="hidden" name="ParentId" value="@Model.ParentId" />
+        <table class="tableContent">
+            <tbody>
+
+                <tr>
+                    <td>
+                        <label class="control-label x120"> 单位名称：</label>
+
+                        <input type="text" name="DeptName" id="RoleName" value="@Model.DeptName" data-rule="required" size="20" />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label x120">单位描述：</label>
+                        <input name="Bz" type="text" size="20" value="@Model.Bz" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <label class="control-label x120">排序：</label>
+                        <input name="OrderBy" type="text" size="20" value="@Model.OrderBy" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </form>
+</div>
+<div class="bjui-pageFooter">
+    <ul>
+        <li><button type="button" class="btn-close">@GlobalLngResource.GetRes("Close")</button></li>
+        <li><button type="submit" class="btn-default">@GlobalLngResource.GetRes("Save")</button></li>
+    </ul>
+</div>
