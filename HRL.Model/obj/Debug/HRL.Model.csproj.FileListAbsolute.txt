@@ -8,9 +8,3 @@ F:\HRLSolution\HRLSolution\HRL.Model\bin\Debug\HRL.Model.dll.config
 F:\HRLSolution\HRLSolution\HRL.Model\bin\Debug\EntityFramework.dll
 F:\HRLSolution\HRLSolution\HRL.Model\bin\Debug\EntityFramework.xml
 F:\HRLSolution\HRLSolution\HRL.Model\bin\Debug\zh-Hans\EntityFramework.resources.dll
-F:\HRLSolution\HRLSolution\Lib\HRL.Model.dll.config
-F:\HRLSolution\HRLSolution\Lib\HRL.Model.dll
-F:\HRLSolution\HRLSolution\Lib\HRL.Model.pdb
-F:\HRLSolution\HRLSolution\HRL.Model\obj\Debug\HRL.Model.csprojResolveAssemblyReference.cache
-F:\HRLSolution\HRLSolution\HRL.Model\obj\Debug\HRL.Model.dll
-F:\HRLSolution\HRLSolution\HRL.Model\obj\Debug\HRL.Model.pdb

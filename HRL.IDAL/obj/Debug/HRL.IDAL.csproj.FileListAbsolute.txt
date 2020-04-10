@@ -5,8 +5,3 @@ C:\Users\Administrator\Desktop\HRL\HRLSolution\HRL.IDAL\obj\Debug\HRL.IDAL.dll
 C:\Users\Administrator\Desktop\HRL\HRLSolution\HRL.IDAL\obj\Debug\HRL.IDAL.pdb
 F:\HRLSolution\HRLSolution\HRL.IDAL\bin\Debug\HRL.IDAL.dll
 F:\HRLSolution\HRLSolution\HRL.IDAL\bin\Debug\HRL.IDAL.pdb
-F:\HRLSolution\HRLSolution\Lib\HRL.IDAL.dll
-F:\HRLSolution\HRLSolution\Lib\HRL.IDAL.pdb
-F:\HRLSolution\HRLSolution\HRL.IDAL\obj\Debug\HRL.IDAL.csprojResolveAssemblyReference.cache
-F:\HRLSolution\HRLSolution\HRL.IDAL\obj\Debug\HRL.IDAL.dll
-F:\HRLSolution\HRLSolution\HRL.IDAL\obj\Debug\HRL.IDAL.pdb

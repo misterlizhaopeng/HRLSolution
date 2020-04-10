@@ -4,8 +4,3 @@ C:\Users\Administrator\Desktop\HRL\HRLSolution\HRL.BLL\obj\Debug\HRL.BLL.dll
 C:\Users\Administrator\Desktop\HRL\HRLSolution\HRL.BLL\obj\Debug\HRL.BLL.pdb
 F:\HRLSolution\HRLSolution\HRL.BLL\bin\Debug\HRL.BLL.dll
 F:\HRLSolution\HRLSolution\HRL.BLL\bin\Debug\HRL.BLL.pdb
-F:\HRLSolution\HRLSolution\Lib\HRL.BLL.dll
-F:\HRLSolution\HRLSolution\Lib\HRL.BLL.pdb
-F:\HRLSolution\HRLSolution\HRL.BLL\obj\Debug\HRL.BLL.csprojResolveAssemblyReference.cache
-F:\HRLSolution\HRLSolution\HRL.BLL\obj\Debug\HRL.BLL.dll
-F:\HRLSolution\HRLSolution\HRL.BLL\obj\Debug\HRL.BLL.pdb
